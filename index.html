@@ -431,7 +431,7 @@ tr:hover td{background:#fafafa}
     <div class="banner-text"><div class="banner-title">Informações de exames</div><div class="banner-desc">Preparo, dilatação, autorização e duração de cada exame</div></div>
   </div>
   <div class="pg-body">
-    <div class="alert a-amber"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg><div><strong>⚠️ Equipamentos em manutenção (sem previsão de retorno):</strong><br>• Downtown – Aberrometria<br>• Méier – Pentacam<br>• Nova Iguaçu – Retinografia e Angiografia · Microscopia (somente pacientes internos)<br>• São Cristóvão – Campo Visual / CVC</div></div>
+    <div class="alert a-amber"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg><div><strong>⚠️ Equipamentos em manutenção (sem previsão de retorno):</strong><br>• Downtown – Aberrometria e Gonioscopia<br>• Méier – Pentacam<br>• Nova Iguaçu – Retinografia e Angiografia · Microscopia (somente pacientes internos)<br>• São Cristóvão – Campo Visual / CVC</div></div>
     <div class="sw"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><input class="sb-input" type="text" placeholder="Buscar exame..." oninput="filtrarExames(this.value)" id="exam-search"></div>
     <div class="fr">
       <select onchange="filtrarExames(document.getElementById('exam-search').value)" id="f-dilat"><option value="">Dilatação?</option><option value="Sim">Sim</option><option value="Não">Não</option></select>
@@ -1195,7 +1195,7 @@ var exames=[
   {s:"CVC",n:"Campo Visual Computadorizado",ind:"Glaucoma, lesões neurológicas, retinopatias",prep:"Não",dil:"Não",ac:"Não",laser:"Não",aut:"Não",unit:"Méier, Downtown e Nova Iguaçu",quem:"Técnico",dur:"15–30 min",suspenso:false,obs_manu:"São Cristóvão: equipamento com defeito (manutenção) – sem previsão de retorno"},
   {s:"ESTEREOFOTO",n:"Estereofoto de Papila",ind:"Glaucoma, hipertensão ocular",prep:"Não",dil:"Pode haver",ac:"Sim",laser:"Não",aut:"Não",unit:"Downtown",quem:"Médico",dur:"5–15 min"},
   {s:"FOTO",n:"Fotocoagulação (Yag laser)",ind:"Retinopatia diabética, degenerações periféricas",prep:"Não",dil:"Sim",ac:"Sim",laser:"Sim",aut:"Sim",unit:"Todas",quem:"Técnico",dur:"15–30 min"},
-  {s:"GONIO",n:"Gonioscopia",ind:"Glaucoma de ângulo fechado",prep:"Não",dil:"Não (incômodo)",ac:"Sim (+60 anos)",laser:"Não",aut:"Não",unit:"Todas",quem:"Médico",dur:"10 min"},
+  {s:"GONIO",n:"Gonioscopia",ind:"Glaucoma de ângulo fechado",prep:"Não",dil:"Não (incômodo)",ac:"Sim (+60 anos)",laser:"Não",aut:"Não",unit:"Todas exceto Downtown",quem:"Médico",dur:"10 min",obs_manu:"Downtown: equipamento em manutenção – sem previsão de retorno"},
   {s:"IRIDO",n:"Iridotomia (Yag laser)",ind:"Glaucoma de ângulo fechado ou risco",prep:"Não",dil:"Sim",ac:"Sim",laser:"Sim",aut:"Sim",unit:"Todas",quem:"Médico",dur:"10 min"},
   {s:"MICRO",n:"Microscopia Especular da Córnea",ind:"Distrofias corneanas, pré-op. catarata",prep:"Não",dil:"Não",ac:"Não",laser:"Não",aut:"Não",unit:"Todas",quem:"Técnico",dur:"5 min",obs_manu:"Nova Iguaçu: somente para pacientes internos (imagem externa não sai)"},
   {s:"MR",n:"Mapeamento de Retina",ind:"Descolamento retina, tumores, degenerações",prep:"Não",dil:"Sim",ac:"Sim",laser:"Não",aut:"Não",unit:"Todas",quem:"Médico",dur:"10–20 min"},
