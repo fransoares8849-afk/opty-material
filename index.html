@@ -431,7 +431,7 @@ tr:hover td{background:#fafafa}
     <div class="banner-text"><div class="banner-title">Informações de exames</div><div class="banner-desc">Preparo, dilatação, autorização e duração de cada exame</div></div>
   </div>
   <div class="pg-body">
-    <div class="alert a-amber"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg><div><strong>⚠️ Equipamentos em manutenção (sem previsão de retorno):</strong><br>• Downtown – Aberrometria, Gonioscopia e Campo Visual / CVC<br>• Méier – Pentacam<br>• Nova Iguaçu – Retinografia e Angiografia · Microscopia (somente pacientes internos)<br>• São Cristóvão – Campo Visual / CVC</div></div>
+    <div class="alert a-amber"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg><div><strong>⚠️ Equipamentos em manutenção (sem previsão de retorno):</strong><br>• Downtown – Aberrometria, Gonioscopia e Campo Visual / CVC<br>• Méier – Pentacam<br>• Nova Iguaçu – Microscopia (somente pacientes internos)<br>• São Cristóvão – Campo Visual / CVC</div></div>
     <div class="sw"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><input class="sb-input" type="text" placeholder="Buscar exame..." oninput="filtrarExames(this.value)" id="exam-search"></div>
     <div class="fr">
       <select onchange="filtrarExames(document.getElementById('exam-search').value)" id="f-dilat"><option value="">Dilatação?</option><option value="Sim">Sim</option><option value="Não">Não</option></select>
@@ -1188,7 +1188,7 @@ var portais=[
 
 var exames=[
   {s:"ABERROMETRIA",n:"Aberrometria",ind:"Cirurgia refrativa, qualidade visual",prep:"Não",dil:"Não",ac:"Sim",laser:"Não",aut:"Somente particular",unit:"Downtown",quem:"Médico",dur:"5–10 min"},
-  {s:"ANGIO",n:"Angiofluoresceinografia",ind:"DMRI, retinopatia diabética, oclusões, edema macular",prep:"Não",dil:"Não",ac:"Sim",laser:"Não",aut:"Não",unit:"Downtown e São Cristóvão",quem:"Médico",dur:"10–20 min",obs_manu:"Nova Iguaçu: equipamento em manutenção – sem previsão de retorno"},
+  {s:"ANGIO",n:"Angiofluoresceinografia",ind:"DMRI, retinopatia diabética, oclusões, edema macular",prep:"Não",dil:"Não",ac:"Sim",laser:"Não",aut:"Não",unit:"Downtown, Nova Iguaçu e São Cristóvão",quem:"Médico",dur:"10–20 min"},
   {s:"BIO",n:"Biometria ocular / IOL Master",ind:"Pré-op. catarata, cirurgia refrativa",prep:"Não",dil:"Não",ac:"Não",laser:"Não",aut:"Não",unit:"Todas",quem:"Técnico",dur:"5–10 min"},
   {s:"CAPS",n:"Capsulotomia a laser (Yag)",ind:"Opacificação da cápsula posterior pós-catarata",prep:"Não",dil:"Sim",ac:"Sim",laser:"Sim",aut:"Sim",unit:"Todas",quem:"Médico",dur:"10 min"},
   {s:"CTD",n:"Curva Tensional Diária",ind:"Glaucoma, variações tensionais",prep:"Disponibilidade o dia todo",dil:"Não",ac:"Não",laser:"Não",aut:"Não",unit:"Downtown e São Cristóvão",quem:"Médico",dur:"Dia todo (4–6 medidas)"},
@@ -1203,7 +1203,7 @@ var exames=[
   {s:"PAQUI",n:"Paquimetria Ultrassônica",ind:"Glaucoma, ceratocone, pré-op. refrativa",prep:"Não",dil:"Não",ac:"Não",laser:"Não",aut:"Não",unit:"Todas",quem:"Técnico",dur:"5 min"},
   {s:"PAM",n:"Potencial de Acuidade Visual",ind:"Pré-op. catarata, opacidades da mídia",prep:"Não",dil:"Sim (Downtown)",ac:"Sim (Downtown)",laser:"Não",aut:"Não",unit:"Todas",quem:"Técnico",dur:"10 min"},
   {s:"PENTACAM",n:"Pentacam",ind:"Ceratocone, cirurgia refrativa, câmara anterior",prep:"Não",dil:"Não",ac:"Não",laser:"Não",aut:"Somente particular",unit:"Méier",quem:"Técnico",dur:"5–10 min"},
-  {s:"RET",n:"Retinografia Digital",ind:"DMRI, retinopatia diabética, glaucoma",prep:"Não",dil:"Às vezes",ac:"Sim",laser:"Não",aut:"Não",unit:"Todas exceto Nova Iguaçu",quem:"Técnico",dur:"5 min",obs_manu:"Nova Iguaçu: equipamento em manutenção – sem previsão de retorno"},
+  {s:"RET",n:"Retinografia Digital",ind:"DMRI, retinopatia diabética, glaucoma",prep:"Não",dil:"Às vezes",ac:"Sim",laser:"Não",aut:"Não",unit:"Todas",quem:"Técnico",dur:"5 min"},
   {s:"TOPO",n:"Topografia / Ceratoscopia Corneana",ind:"Ceratocone, cirurgia refrativa, adaptação LC",prep:"Não",dil:"Não",ac:"Não",laser:"Não",aut:"Não",unit:"Todas",quem:"Técnico",dur:"5 min"},
   {s:"TSH",n:"Teste de Sobrecarga Hídrica",ind:"Glaucoma de pressão normal",prep:"2h de jejum de líquido",dil:"Não",ac:"Não",laser:"Não",aut:"Não",unit:"Downtown e São Cristóvão",quem:"Médico",dur:"1–2 horas"},
   {s:"USG",n:"Ultrassonografia Ocular",ind:"Descolamento retina, hemorragia vítrea, tumores",prep:"Não",dil:"Não",ac:"Não",laser:"Não",aut:"Não",unit:"Todas",quem:"Médico",dur:"10–15 min"},
@@ -1561,7 +1561,7 @@ var valoresData={
       {n:"Consulta em consultório",c:"R$ 205,00"},
       {n:"Dr. Vitor Cerqueira",c:"R$ 340,00"}
     ],
-    obs:"Não realiza IOL Master. Manutenção: Retinografia e Angiografia. Microscopia: somente pacientes internos.",
+    obs:"Não realiza IOL Master. Microscopia: somente pacientes internos.",
     rows:[
       ["Angiografia (⚠️ manutenção)","R$ 230,00","R$ 460,00"],
       ["Biometria Ultrassônica","R$ 180,00","R$ 360,00"],
