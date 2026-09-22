@@ -317,6 +317,11 @@ tr:hover td{background:#fafafa}
       <span class="nav-ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg></span>
       Verticalização
     </button>
+    <span class="nav-label">Scripts</span>
+    <button class="nav-btn" style="--ic:#6366f1" onclick="go('scripts',this)">
+      <span class="nav-ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zM12 17c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm1-8H11V7h2v2z"/></svg></span>
+      Scripts de Atendimento
+    </button>
     <span class="nav-label">Comunicados</span>
     <button class="nav-btn" style="--ic:#f59e0b" onclick="go('recados',this)">
       <span class="nav-ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg></span>
@@ -404,7 +409,7 @@ tr:hover td{background:#fafafa}
   </div>
   <div class="pg-body">
     <div class="alert a-amber"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg><div><strong>Amil:</strong> várias redes descredenciadas (DRI-Plena, DRI-Básica, MedicuS, Bronze RJ Mais). Validar no portal antes de confirmar.</div></div>
-    <div class="alert a-red"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg><div><strong>⚠️ Leve Saúde – A partir de 01/06/2026 não atendemos mais este convênio.</strong> Não agendar consultas ou exames pelo plano Leve Saúde a partir desta data.</div></div><div class="alert a-blue"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg><div><strong>Leve Fácil</strong> aceito somente em Méier e São Cristóvão. Todos os exames Leve exigem autorização prévia.</div></div>
+    <div class="alert a-red"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg><div><strong>🚫 Leve Saúde – Convênio descredenciado.</strong> Não realizamos mais atendimentos pelo plano Leve Saúde. Não agendar consultas ou exames.</div></div>
     <div class="sw"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><input class="sb-input" type="text" placeholder="Buscar convênio..." oninput="filtrarConv(this.value)" id="conv-search"></div>
     <div style="font-size:12px;color:var(--muted);margin-bottom:10px"><span style="margin-right:12px"><span class="dot dg"></span>Credenciado</span><span style="margin-right:12px"><span class="dot dr"></span>Não credenciado</span><span><span class="dot da"></span>Parcial/verificar</span></div>
     <div class="tw"><table><thead><tr><th>Convênio</th><th>Méier</th><th>Downtown</th><th>Nova Iguaçu</th><th>São Cristóvão</th></tr></thead><tbody id="conv-body"></tbody></table></div>
@@ -432,7 +437,7 @@ tr:hover td{background:#fafafa}
   </div>
   <div class="pg-body">
     <div class="alert a-red"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg><div><strong>⚠️ Atenção importante:</strong> Para exames solicitados com finalidade de <strong>cirurgia refrativa</strong>, não deve ser realizado agendamento de <strong>ceratoscopia ou topografia pré-cirúrgica na unidade Méier Mais</strong>. Nestes casos, os pacientes deverão ser direcionados para outra unidade do grupo.</div></div>
-    <div class="alert a-amber"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg><div><strong>⚠️ Equipamentos em manutenção (sem previsão de retorno):</strong><br>• Downtown – Aberrometria, Gonioscopia, Campo Visual/CVC (bloqueados) e Angiografia (agenda distante)<br>• Méier – Pentacam<br>• São Cristóvão – Campo Visual / CVC</div></div>
+    <div class="alert a-amber"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg><div><strong>⚠️ Equipamentos em manutenção (sem previsão de retorno):</strong><br>• Downtown – Aberrometria, CVC, Retinografia e Angiografia (sem previsão – bloqueados)<br>• Méier – Pentacam e OCT (sem previsão – bloqueados)<br>• São Cristóvão – Campo Visual / CVC<br>• Nova Iguaçu – Microscopia (somente pacientes internos – não agendar externos)</div></div>
     <div class="sw"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><input class="sb-input" type="text" placeholder="Buscar exame..." oninput="filtrarExames(this.value)" id="exam-search"></div>
     <div class="fr">
       <select onchange="filtrarExames(document.getElementById('exam-search').value)" id="f-dilat"><option value="">Dilatação?</option><option value="Sim">Sim</option><option value="Não">Não</option></select>
@@ -986,6 +991,455 @@ tr:hover td{background:#fafafa}
 
 </main>
 
+
+<!-- SCRIPTS DE ATENDIMENTO -->
+<div class="page" id="page-scripts">
+  <div class="banner" style="background:linear-gradient(135deg,#4338ca,#818cf8)">
+    <div class="banner-deco1"></div><div class="banner-deco2"></div>
+    <div class="banner-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zM12 17c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm1-8H11V7h2v2z"/></svg></div>
+    <div class="banner-text">
+      <div class="banner-title">Scripts de Atendimento</div>
+      <div class="banner-desc">Roteiros de agendamento por marca · Essencial · Select · Eyecenter Unique</div>
+    </div>
+  </div>
+  <div class="pg-body">
+
+    <!-- Tabs de marca -->
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px">
+      <button onclick="showScript('essencial',this)" class="script-tab" style="display:flex;align-items:center;gap:8px;padding:10px 20px;border:2px solid #16a34a;border-radius:10px;background:#16a34a;color:#fff;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer">
+        <span style="width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px">E</span>
+        Essencial RJ
+      </button>
+      <button onclick="showScript('select',this)" class="script-tab" style="display:flex;align-items:center;gap:8px;padding:10px 20px;border:2px solid #e2e8f0;border-radius:10px;background:#fff;color:#1e4799;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer">
+        <span style="width:24px;height:24px;border-radius:50%;background:#1e4799;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;color:#fff">S</span>
+        Select RJ
+      </button>
+      <button onclick="showScript('unique',this)" class="script-tab" style="display:flex;align-items:center;gap:8px;padding:10px 20px;border:2px solid #e2e8f0;border-radius:10px;background:#fff;color:#b45309;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer">
+        <span style="width:24px;height:24px;border-radius:50%;background:#b45309;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;color:#fff">U</span>
+        Eyecenter Unique
+      </button>
+    </div>
+
+    <!-- ========== ESSENCIAL RJ ========== -->
+    <div id="script-essencial">
+      <div style="background:#fef9c3;border:2px solid #fde047;border-radius:10px;padding:10px 16px;margin-bottom:20px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:#854d0e">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+        SOMENTE TRANSBORDO DO AUTOATENDIMENTO — Atendimento humano exclusivo para transbordo.
+      </div>
+
+      <!-- Princípio -->
+      <div class="card" style="border-left:4px solid #16a34a;margin-bottom:16px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#16a34a"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          <span style="font-size:14px;font-weight:700;color:#15803d">Princípio do Atendimento</span>
+        </div>
+        <p style="font-size:13px;color:#475569;line-height:1.7">O atendimento humano é exclusivo para transbordo: só entra em ação quando o paciente <strong>NÃO CONSEGUE agendar pelo link de autoatendimento</strong>.</p>
+      </div>
+
+      <!-- Passo 1 -->
+      <div class="card" style="margin-bottom:14px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+          <span style="width:28px;height:28px;border-radius:50%;background:#16a34a;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0">1</span>
+          <span style="font-size:15px;font-weight:700;color:#1e293b">Identificação e Consulta no Sistema (TASY)</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div style="background:#f8fafc;border-radius:8px;padding:14px">
+            <div style="font-size:11px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px">Sistema — O que consultar no TASY</div>
+            <div style="font-size:13px;color:#374151;line-height:1.8">
+              Buscar por <strong>nome completo, data de nascimento ou CPF</strong>.<br>
+              ✅ <strong>Cadastro encontrado:</strong> confirmar dados e seguir.<br>
+              👥 <strong>Para terceiros:</strong> solicitar dados do paciente.<br>
+              ❌ <strong>Não encontrado:</strong> seguir para o script.<br>
+              <div style="background:#fee2e2;border-radius:6px;padding:8px 10px;margin-top:10px;font-size:12px;color:#991b1b"><strong>⚠️ IMPORTANTE:</strong> confirmar SEMPRE que o paciente já tentou agendar pelo link antes de prosseguir.</div>
+            </div>
+          </div>
+          <div style="background:#f0fdf4;border-radius:8px;padding:14px;border:1px solid #86efac">
+            <div style="font-size:11px;font-weight:700;color:#15803d;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px">Script — O que perguntar</div>
+            <div style="font-size:13px;color:#374151;line-height:2">
+              <strong>1.</strong> "Olá! Bom dia/boa tarde/boa noite! Meu nome é XXXXX, da OPTY Essencial RJ. Vi que você tentou agendar pelo nosso link de autoatendimento — vou te ajudar a concluir por aqui!"<br>
+              <strong>2.</strong> "A consulta é para você?"<br>
+              <strong>3.</strong> "Tentou agendar pelo link de autoatendimento?"<br>
+              <strong>4.</strong> "Apresentou algum erro?"
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Passo 2 -->
+      <div class="card" style="margin-bottom:14px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+          <span style="width:28px;height:28px;border-radius:50%;background:#16a34a;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0">2</span>
+          <span style="font-size:15px;font-weight:700;color:#1e293b">Entender o Motivo do Transbordo</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div style="background:#f8fafc;border-radius:8px;padding:14px">
+            <div style="font-size:11px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Sistema — O que consultar</div>
+            <div style="font-size:13px;color:#374151;line-height:1.8">• Convênio (Captation)<br>• Histórico de consultas e exames<br>• Unidade de atendimento</div>
+            <div style="margin-top:10px;background:#dbeafe;border-radius:6px;padding:8px 10px">
+              <div style="font-size:11px;font-weight:700;color:#1e40af;margin-bottom:6px">Motivos comuns de transbordo</div>
+              <div style="font-size:12px;color:#1e40af;line-height:1.8">✓ Sem horários disponíveis no link<br>✓ Dificuldade para localizar unidade<br>✓ Erro técnico no sistema<br>✓ Dúvida sobre cobertura Captation<br>✓ Outro motivo</div>
+            </div>
+          </div>
+          <div style="background:#f0fdf4;border-radius:8px;padding:14px;border:1px solid #86efac">
+            <div style="font-size:11px;font-weight:700;color:#15803d;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px">Script — O que perguntar</div>
+            <div style="font-size:13px;color:#374151;line-height:2">
+              <strong>1.</strong> "Pode me contar o que aconteceu quando tentou agendar pelo link — apareceu alguma mensagem de erro, não havia horários disponíveis, ou teve alguma outra dificuldade?"<br>
+              <strong>2.</strong> "Posso confirmar alguns dados para dar continuidade ao seu atendimento?"
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Passo 3 -->
+      <div class="card" style="margin-bottom:14px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+          <span style="width:28px;height:28px;border-radius:50%;background:#16a34a;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0">3</span>
+          <span style="font-size:15px;font-weight:700;color:#1e293b">Agendamento — Convênio Captation</span>
+        </div>
+        <div style="background:#f0fdf4;border-radius:8px;padding:14px;border:1px solid #86efac;margin-bottom:12px">
+          <div style="font-size:13px;font-weight:700;color:#15803d;margin-bottom:8px">🏥 Unidades Essencial RJ</div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <span style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid #86efac;border-radius:8px;padding:6px 12px;font-size:13px;font-weight:600;color:#15803d">🏢 São Cristóvão</span>
+            <span style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid #86efac;border-radius:8px;padding:6px 12px;font-size:13px;font-weight:600;color:#15803d">🏢 Nova Iguaçu</span>
+            <span style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid #86efac;border-radius:8px;padding:6px 12px;font-size:13px;font-weight:600;color:#15803d">💛 Clínicas Parceiras</span>
+          </div>
+        </div>
+        <div style="font-size:13px;color:#374151;line-height:2">
+          <strong>1. Unidade:</strong> "Você prefere ser atendido em São Cristóvão, Nova Iguaçu ou em uma clínica parceira mais próxima de você?"<br>
+          <strong>2. Dia/período:</strong> "Qual dia da semana ou período você prefere?"<br>
+          <strong>3. Horários:</strong> oferecer apenas 2 opções sequenciais.<br>
+          <strong>4.</strong> Se não aceitar: "Qual horário seria melhor para você?"<br>
+          <span style="color:#64748b;font-size:12px">🔄 Retorno: será sempre com o mesmo médico (obrigatório).</span>
+        </div>
+      </div>
+
+      <!-- Passo 4 -->
+      <div class="card" style="margin-bottom:14px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+          <span style="width:28px;height:28px;border-radius:50%;background:#16a34a;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0">4</span>
+          <span style="font-size:15px;font-weight:700;color:#1e293b">Finalização — Script para o Paciente</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="width:24px;height:24px;border-radius:50%;background:#16a34a;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex-shrink:0">1</span><span style="font-size:13px;color:#374151">"Então, ficou agendado para o dia XX/XX/XXXX, às XX:XX, com o(a) Dr.(a) XXXXX, na unidade/clínica parceira XXXXX."</span></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="width:24px;height:24px;border-radius:50%;background:#16a34a;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex-shrink:0">2</span><span style="font-size:13px;color:#374151">Se houver exames: "Os exames foram agendados para o dia XX/XX/XXXX, às XX:XX. A consulta será na sequência."</span></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="width:24px;height:24px;border-radius:50%;background:#f59e0b;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex-shrink:0">3</span><span style="font-size:13px;color:#374151"><strong>Este atendimento de transbordo NÃO realiza confirmação de presença</strong> — encerrar reforçando os detalhes do agendamento.</span></div>
+        </div>
+      </div>
+
+      <!-- Importante -->
+      <div style="background:#fff7ed;border:1.5px solid #fed7aa;border-radius:10px;padding:16px;margin-bottom:10px">
+        <div style="font-size:13px;font-weight:700;color:#c2410c;margin-bottom:10px">⚠️ Importante</div>
+        <div style="font-size:13px;color:#374151;line-height:2">
+          ✓ Todos os atendimentos devem ser baseados no histórico do paciente no sistema (TASY).<br>
+          ✓ Faça validações, não coletas desnecessárias de informações.<br>
+          ✓ Confirme sempre os dados cadastrais.<br>
+          ✓ Registre na observação: motivo do transbordo, unidade/clínica parceira escolhida e informações relevantes.
+        </div>
+      </div>
+
+      <!-- Pontos de atenção -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px">
+        <div style="background:#fff;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;text-align:center"><div style="font-size:20px;margin-bottom:4px">📞</div><div style="font-size:11px;font-weight:700;color:#1e293b">SISTEMA (TASY)</div><div style="font-size:11px;color:#64748b">Consulte SEMPRE antes de perguntar</div></div>
+        <div style="background:#fff;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;text-align:center"><div style="font-size:20px;margin-bottom:4px">🤖</div><div style="font-size:11px;font-weight:700;color:#1e293b">AUTOSSERVIÇO</div><div style="font-size:11px;color:#64748b">Oriente a concluir pelo link antes de agendar</div></div>
+        <div style="background:#fff;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;text-align:center"><div style="font-size:20px;margin-bottom:4px">🚫</div><div style="font-size:11px;font-weight:700;color:#1e293b">SEM CONFIRMAÇÃO</div><div style="font-size:11px;color:#64748b">Transbordo não realiza confirmação de presença</div></div>
+        <div style="background:#fff;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;text-align:center"><div style="font-size:20px;margin-bottom:4px">🎯</div><div style="font-size:11px;font-weight:700;color:#1e293b">OTIMIZAÇÃO</div><div style="font-size:11px;color:#64748b">Perguntas certas geram mais agilidade</div></div>
+      </div>
+    </div>
+
+    <!-- ========== SELECT RJ ========== -->
+    <div id="script-select" style="display:none">
+
+      <!-- Princípio -->
+      <div class="card" style="border-left:4px solid #1e4799;margin-bottom:16px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#1e4799"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          <span style="font-size:14px;font-weight:700;color:#1e4799">Princípio do Atendimento</span>
+        </div>
+        <p style="font-size:13px;color:#475569;line-height:1.7">O sistema é a fonte de informação. O atendimento é baseado no <strong>histórico do paciente</strong> — isso gera <strong>personalização, agilidade e a melhor experiência</strong> para o paciente.</p>
+      </div>
+
+      <!-- Orientações -->
+      <div class="card" style="border-left:4px solid #16a34a;margin-bottom:14px">
+        <div style="font-size:14px;font-weight:700;color:#15803d;margin-bottom:12px">✅ Orientações de Agendamento</div>
+        <div style="font-size:13px;color:#374151;line-height:2">
+          ✓ Pacientes <strong>diabéticos</strong>: agendar para especialidade de <strong>Retina</strong>.<br>
+          ✓ Pacientes <strong>hipertensos</strong>: agendar para especialidade de <strong>Glaucoma</strong>.<br>
+          ✓ Pacientes com <strong>50 anos ou mais</strong>: agendar para <strong>Catarata</strong>, obrigatoriamente com médico sócio.<br>
+          ✓ Já realizou cirurgia de catarata: pode ser agendado com qualquer médico não sócio.
+        </div>
+        <div style="background:#f0f4ff;border:1px solid #c7d2fe;border-radius:8px;padding:10px 14px;margin-top:12px;font-size:13px;color:#3730a3">
+          <strong>👁️ CATARATA — PACIENTE NOVO (Regra Select RJ)</strong><br>
+          Critério: idade mínima de <strong>50 anos</strong>.<br>
+          Agendamento sempre com <strong>médico sócio</strong> da unidade.
+        </div>
+      </div>
+
+      <!-- Passo 1 -->
+      <div class="card" style="margin-bottom:14px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+          <span style="width:28px;height:28px;border-radius:50%;background:#1e4799;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0">1</span>
+          <span style="font-size:15px;font-weight:700;color:#1e293b">Identificação e Consulta no Sistema (TASY)</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div style="background:#f8fafc;border-radius:8px;padding:14px">
+            <div style="font-size:11px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px">Sistema — O que consultar</div>
+            <div style="font-size:13px;color:#374151;line-height:1.8">
+              Buscar por <strong>nome completo, data de nascimento ou CPF</strong>.<br>
+              ✅ <strong>Cadastro encontrado:</strong> confirmar dados e seguir.<br>
+              👥 <strong>Para terceiros:</strong> solicitar dados do paciente.<br>
+              ❌ <strong>Não encontrado:</strong> seguir para o script.<br>
+              <div style="background:#fee2e2;border-radius:6px;padding:8px 10px;margin-top:10px;font-size:12px;color:#991b1b"><strong>⚠️ IMPORTANTE:</strong> confirmar e validar os dados cadastrais em todos os atendimentos.</div>
+            </div>
+          </div>
+          <div style="background:#eff6ff;border-radius:8px;padding:14px;border:1px solid #93c5fd">
+            <div style="font-size:11px;font-weight:700;color:#1e40af;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px">Script — O que perguntar</div>
+            <div style="font-size:13px;color:#374151;line-height:2">
+              <strong>1.</strong> "Olá! Bom dia/boa tarde/boa noite! Meu nome é XXXXX, da OPTY Select RJ. Em que posso ajudar?"<br>
+              <strong>2.</strong> "A consulta é para você?"<br>
+              <strong>3.</strong> "É sua primeira vez conosco?"<br>
+              <strong>4.</strong> "Gostaria de agendar para mais alguém?"<br>
+              <span style="display:block;background:#dcfce7;border-radius:6px;padding:8px;margin-top:8px;font-size:12px;color:#15803d"><strong>5.</strong> "Podemos falar por esse número no WhatsApp para confirmar sua presença?"</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Passo 2 -->
+      <div class="card" style="margin-bottom:14px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+          <span style="width:28px;height:28px;border-radius:50%;background:#1e4799;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0">2</span>
+          <span style="font-size:15px;font-weight:700;color:#1e293b">Identificar a Necessidade do Paciente</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div style="background:#f8fafc;border-radius:8px;padding:14px">
+            <div style="font-size:11px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Sistema — O que consultar</div>
+            <div style="font-size:13px;color:#374151;line-height:1.8">• Convênio atual<br>• Último médico que o atendeu<br>• Prescrição médica (exames e observações)<br>• Histórico de consultas e exames<br>• Unidade de atendimento</div>
+            <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
+              <div style="background:#dbeafe;border-radius:6px;padding:8px 10px;font-size:12px;color:#1e40af"><strong>Paciente base (já atendido):</strong> continuar com o médico do histórico ou da preferência. Se houver exames prescritos, informar e agendá-los.</div>
+              <div style="background:#fef3c7;border-radius:6px;padding:8px 10px;font-size:12px;color:#b45309"><strong>Paciente novo:</strong> indicar médico de cada especialidade. Perguntar: Diabetes? Hipertensão? Já realizou cirurgia de catarata?</div>
+            </div>
+          </div>
+          <div style="background:#eff6ff;border-radius:8px;padding:14px;border:1px solid #93c5fd">
+            <div style="font-size:11px;font-weight:700;color:#1e40af;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px">Script — O que perguntar</div>
+            <div style="font-size:13px;color:#374151;line-height:2">
+              <strong>1.</strong> "Seu convênio permanece o mesmo: (NOME DO CONVÊNIO)?"<br>
+              <strong>2.</strong> "Posso confirmar alguns dados para dar continuidade ao seu atendimento?"
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Passo 3 -->
+      <div class="card" style="margin-bottom:14px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+          <span style="width:28px;height:28px;border-radius:50%;background:#1e4799;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0">3</span>
+          <span style="font-size:15px;font-weight:700;color:#1e293b">Agendamento</span>
+        </div>
+        <div style="background:#eff6ff;border-radius:8px;padding:14px;border:1px solid #93c5fd;margin-bottom:12px">
+          <div style="font-size:13px;font-weight:700;color:#1e40af;margin-bottom:8px">🏥 Unidades Select RJ</div>
+          <div style="display:flex;gap:10px">
+            <span style="background:#fff;border:1px solid #93c5fd;border-radius:8px;padding:6px 12px;font-size:13px;font-weight:600;color:#1e40af">🏢 Méier</span>
+            <span style="background:#fff;border:1px solid #93c5fd;border-radius:8px;padding:6px 12px;font-size:13px;font-weight:600;color:#1e40af">🏢 Shopping Downtown</span>
+          </div>
+        </div>
+        <div style="font-size:13px;color:#374151;line-height:2">
+          <strong>1. Unidade:</strong> "Em qual unidade prefere ser atendido — Méier ou Shopping Downtown?"<br>
+          <strong>2. Dia/período:</strong> "Qual dia da semana ou período você prefere?"<br>
+          <strong>3. Horários:</strong> oferecer apenas 2 opções sequenciais (evitar buracos na agenda).<br>
+          <strong>4.</strong> Se não aceitar: "Qual horário seria melhor para você?"<br>
+          <span style="color:#64748b;font-size:12px">🔄 Retorno: sempre com o mesmo médico (obrigatório).</span>
+        </div>
+      </div>
+
+      <!-- Passo 4 -->
+      <div class="card" style="margin-bottom:14px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+          <span style="width:28px;height:28px;border-radius:50%;background:#1e4799;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0">4</span>
+          <span style="font-size:15px;font-weight:700;color:#1e293b">Finalização — Script para o Paciente</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="width:24px;height:24px;border-radius:50%;background:#1e4799;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex-shrink:0">1</span><span style="font-size:13px;color:#374151">"Então, ficou agendado para o dia XX/XX/XXXX, às XX:XX, com o(a) Dr.(a) XXXXX, na unidade (Méier / Shopping Downtown)."</span></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="width:24px;height:24px;border-radius:50%;background:#1e4799;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex-shrink:0">2</span><span style="font-size:13px;color:#374151">Se houver exames: "Os exames foram agendados para o dia XX/XX/XXXX, às XX:XX. A consulta será na sequência."</span></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="width:24px;height:24px;border-radius:50%;background:#16a34a;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex-shrink:0">3</span><span style="font-size:13px;color:#374151">"Precisamos de sua resposta para avisar o médico da presença <strong>3 dias antes</strong> da consulta."</span></div>
+        </div>
+      </div>
+
+      <!-- Importante + Pontos -->
+      <div style="background:#fff7ed;border:1.5px solid #fed7aa;border-radius:10px;padding:16px;margin-bottom:14px">
+        <div style="font-size:13px;font-weight:700;color:#c2410c;margin-bottom:10px">⚠️ Importante</div>
+        <div style="font-size:13px;color:#374151;line-height:2">
+          ✓ Todos os atendimentos devem ser baseados no histórico do paciente no TASY.<br>
+          ✓ Faça validações, não coletas desnecessárias de informações.<br>
+          ✓ Confirme sempre os dados cadastrais.<br>
+          ✓ Registre na observação: médico direcionado, especialidade, regras aplicadas (idade, convênios etc.) e informações relevantes.
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px">
+        <div style="background:#fff;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;text-align:center"><div style="font-size:20px;margin-bottom:4px">📞</div><div style="font-size:11px;font-weight:700;color:#1e293b">SISTEMA (TASY)</div><div style="font-size:11px;color:#64748b">Consulte SEMPRE antes de perguntar</div></div>
+        <div style="background:#fff;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;text-align:center"><div style="font-size:20px;margin-bottom:4px">🗓️</div><div style="font-size:11px;font-weight:700;color:#1e293b">PERSONALIZAÇÃO</div><div style="font-size:11px;color:#64748b">Atendimento baseado no histórico gera segurança</div></div>
+        <div style="background:#fff;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;text-align:center"><div style="font-size:20px;margin-bottom:4px">📱</div><div style="font-size:11px;font-weight:700;color:#1e293b">WHATSAPP</div><div style="font-size:11px;color:#64748b">Confirmar SEMPRE autorização para contato</div></div>
+        <div style="background:#fff;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;text-align:center"><div style="font-size:20px;margin-bottom:4px">✅</div><div style="font-size:11px;font-weight:700;color:#1e293b">CONFIRMAÇÃO</div><div style="font-size:11px;color:#64748b">A confirmação de presença é essencial para o fluxo clínico</div></div>
+      </div>
+    </div>
+
+    <!-- ========== EYECENTER UNIQUE ========== -->
+    <div id="script-unique" style="display:none">
+      <div style="background:#fef9c3;border:2px solid #fde047;border-radius:10px;padding:10px 16px;margin-bottom:20px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:#854d0e">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+        SOMENTE PARTICULAR — Não atende convênio.
+      </div>
+
+      <!-- Princípio -->
+      <div class="card" style="border-left:4px solid #b45309;margin-bottom:16px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#b45309"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          <span style="font-size:14px;font-weight:700;color:#b45309">Princípio do Atendimento</span>
+        </div>
+        <p style="font-size:13px;color:#475569;line-height:1.7">O sistema é a fonte de informação. O atendimento é baseado no <strong>histórico do paciente</strong> — isso gera <strong>personalização, agilidade e a melhor experiência</strong> premium para o paciente.</p>
+      </div>
+
+      <!-- Orientações -->
+      <div class="card" style="border-left:4px solid #16a34a;margin-bottom:14px">
+        <div style="font-size:14px;font-weight:700;color:#15803d;margin-bottom:12px">✅ Orientações de Agendamento</div>
+        <div style="font-size:13px;color:#374151;line-height:2">
+          ✓ Pacientes <strong>diabéticos</strong>: agendar para especialidade de <strong>Retina</strong>.<br>
+          ✓ Pacientes <strong>hipertensos</strong>: agendar para especialidade de <strong>Glaucoma</strong>.<br>
+          ✓ Pacientes com <strong>50 anos ou mais</strong>: agendar para <strong>Catarata</strong>, obrigatoriamente com médico sócio.<br>
+          ✓ Já realizou cirurgia de catarata: pode ser agendado com qualquer médico não sócio — sempre considerando a continuidade com o médico anterior ou a preferência do paciente.
+        </div>
+        <div style="background:#fdf2f8;border:1px solid #f0abfc;border-radius:8px;padding:12px 14px;margin-top:12px;font-size:13px;color:#86198f">
+          <strong>🔬 Regras especiais de agendamento — Unique</strong>
+          <div style="margin-top:8px;line-height:2;font-size:12px">
+            ✓ <strong>Gonioscopia:</strong> sempre perguntar se a médica solicitante pediu para fazer com alguma médica específica (caso da Dra. Joana ou Dra. Mara). Pode agendar gonioscopia e demais exames na agenda de consulta normalmente.<br>
+            ✓ <strong>CVC + OCT (técnico):</strong> agendar na agenda de exames — segunda ou sexta-feira.<br>
+            ✓ <strong>Mapeamento de Retina (MR):</strong> sempre que possível, dar preferência para marcar na agenda de consulta com o <strong>Dr. Leonardo Machado</strong>.
+          </div>
+        </div>
+        <div style="background:#fdf2f8;border:1px solid #f0abfc;border-radius:8px;padding:12px 14px;margin-top:12px">
+          <div style="font-size:13px;font-weight:700;color:#86198f;margin-bottom:8px">🔬 Regras especiais de agendamento — Unique</div>
+          <div style="font-size:12px;color:#701a75;line-height:2">
+            ✓ <strong>Gonioscopia:</strong> sempre perguntar se a médica solicitante pediu para fazer com alguma médica específica (caso da Dra. Joana ou Dra. Mara). Pode agendar gonioscopia e demais exames na agenda de consulta normalmente.<br>
+            ✓ <strong>CVC + OCT (técnico):</strong> agendar na agenda de exames — segunda ou sexta-feira.<br>
+            ✓ <strong>Mapeamento de Retina (MR):</strong> sempre que possível, dar preferência para marcar na agenda de consulta com o <strong>Dr. Leonardo Machado</strong>.
+          </div>
+        </div>
+        <div style="background:#f0f4ff;border:1px solid #c7d2fe;border-radius:8px;padding:10px 14px;margin-top:12px;font-size:13px;color:#3730a3">
+          <strong>👁️ CATARATA — PACIENTE NOVO (Regra Eyecenter Unique)</strong><br>
+          Critério: idade mínima de <strong>50 anos</strong>.<br>
+          Agendamento sempre com <strong>médico sócio</strong> da unidade.
+        </div>
+      </div>
+
+      <!-- Passo 1 -->
+      <div class="card" style="margin-bottom:14px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+          <span style="width:28px;height:28px;border-radius:50%;background:#b45309;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0">1</span>
+          <span style="font-size:15px;font-weight:700;color:#1e293b">Identificação e Consulta no Sistema (TASY)</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div style="background:#f8fafc;border-radius:8px;padding:14px">
+            <div style="font-size:11px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px">Sistema — O que consultar</div>
+            <div style="font-size:13px;color:#374151;line-height:1.8">
+              Buscar por <strong>nome completo, data de nascimento ou CPF</strong>.<br>
+              ✅ <strong>Cadastro encontrado:</strong> confirmar dados e seguir.<br>
+              👥 <strong>Para terceiros:</strong> solicitar dados do paciente.<br>
+              ❌ <strong>Não encontrado:</strong> seguir para o script.<br>
+              <div style="background:#fee2e2;border-radius:6px;padding:8px 10px;margin-top:10px;font-size:12px;color:#991b1b"><strong>⚠️ IMPORTANTE:</strong> confirmar e validar os dados cadastrais em todos os atendimentos.</div>
+            </div>
+          </div>
+          <div style="background:#fff7ed;border-radius:8px;padding:14px;border:1px solid #fed7aa">
+            <div style="font-size:11px;font-weight:700;color:#b45309;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px">Script — O que perguntar</div>
+            <div style="font-size:13px;color:#374151;line-height:2">
+              <strong>1.</strong> "Olá! Bom dia/boa tarde/boa noite! Meu nome é XXXXX, da OPTY Eyecenter Unique. Em que posso ajudar?"<br>
+              <strong>2.</strong> "A consulta é para você?"<br>
+              <strong>3.</strong> "É sua primeira vez conosco?"<br>
+              <strong>4.</strong> "Gostaria de agendar para mais alguém?"<br>
+              <span style="display:block;background:#dcfce7;border-radius:6px;padding:8px;margin-top:8px;font-size:12px;color:#15803d"><strong>5.</strong> "Podemos falar por esse número no WhatsApp para confirmar sua presença?"</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Passo 2 -->
+      <div class="card" style="margin-bottom:14px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+          <span style="width:28px;height:28px;border-radius:50%;background:#b45309;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0">2</span>
+          <span style="font-size:15px;font-weight:700;color:#1e293b">Identificar a Necessidade do Paciente</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div style="background:#f8fafc;border-radius:8px;padding:14px">
+            <div style="font-size:11px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Sistema — O que consultar</div>
+            <div style="font-size:13px;color:#374151;line-height:1.8">• Forma de pagamento (particular)<br>• Último médico que o atendeu<br>• Prescrição médica (exames e observações)<br>• Histórico de consultas e exames<br>• Unidade de atendimento</div>
+            <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
+              <div style="background:#dbeafe;border-radius:6px;padding:8px 10px;font-size:12px;color:#1e40af"><strong>Paciente base:</strong> agendar SEMPRE com o médico do histórico, garantindo continuidade e a experiência premium.</div>
+              <div style="background:#fef3c7;border-radius:6px;padding:8px 10px;font-size:12px;color:#b45309"><strong>Paciente novo:</strong> "Você possui preferência por algum médico ou recebeu indicação?" Se SIM: agendar com o médico de preferência. Se NÃO: perguntar sobre condição clínica e indicar o especialista.</div>
+            </div>
+          </div>
+          <div style="background:#fff7ed;border-radius:8px;padding:14px;border:1px solid #fed7aa">
+            <div style="font-size:11px;font-weight:700;color:#b45309;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px">Script — O que perguntar</div>
+            <div style="font-size:13px;color:#374151;line-height:2">
+              <strong>1.</strong> Reforçar: "Nosso atendimento na Eyecenter Unique é <strong>exclusivamente particular</strong>, sem cobertura por convênio."<br>
+              <strong>2.</strong> "Posso confirmar alguns dados para dar continuidade ao seu atendimento?"
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Passo 3 -->
+      <div class="card" style="margin-bottom:14px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+          <span style="width:28px;height:28px;border-radius:50%;background:#b45309;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0">3</span>
+          <span style="font-size:15px;font-weight:700;color:#1e293b">Agendamento</span>
+        </div>
+        <div style="background:#fff7ed;border-radius:8px;padding:14px;border:1px solid #fed7aa;margin-bottom:12px">
+          <div style="font-size:13px;font-weight:700;color:#b45309;margin-bottom:8px">🏥 Unidades Eyecenter Unique</div>
+          <div style="display:flex;gap:10px">
+            <span style="background:#fff;border:1px solid #fed7aa;border-radius:8px;padding:6px 12px;font-size:13px;font-weight:600;color:#b45309">🏢 Leblon</span>
+            <span style="background:#fff;border:1px solid #fed7aa;border-radius:8px;padding:6px 12px;font-size:13px;font-weight:600;color:#b45309">🏢 Barra Shopping</span>
+          </div>
+        </div>
+        <div style="font-size:13px;color:#374151;line-height:2">
+          <strong>1. Unidade:</strong> "Em qual unidade prefere ser atendido — Leblon ou Barra Shopping?"<br>
+          <strong>2. Dia/período:</strong> "Qual dia da semana ou período você prefere?"<br>
+          <strong>3. Horários:</strong> oferecer apenas 2 opções sequenciais.<br>
+          <strong>4.</strong> Se não aceitar: "Qual horário seria melhor para você?"<br>
+          <span style="color:#64748b;font-size:12px">🔄 Retorno: sempre com o mesmo médico (obrigatório).</span>
+        </div>
+      </div>
+
+      <!-- Passo 4 -->
+      <div class="card" style="margin-bottom:14px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+          <span style="width:28px;height:28px;border-radius:50%;background:#b45309;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0">4</span>
+          <span style="font-size:15px;font-weight:700;color:#1e293b">Finalização — Script para o Paciente</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="width:24px;height:24px;border-radius:50%;background:#b45309;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex-shrink:0">1</span><span style="font-size:13px;color:#374151">"Então, ficou agendado para o dia XX/XX/XXXX, às XX:XX, com o(a) Dr.(a) XXXXX, na unidade (Leblon / Barra Shopping)."</span></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="width:24px;height:24px;border-radius:50%;background:#b45309;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex-shrink:0">2</span><span style="font-size:13px;color:#374151">Se houver exames: "Os exames foram agendados para o dia XX/XX/XXXX, às XX:XX. A consulta será na sequência."</span></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="width:24px;height:24px;border-radius:50%;background:#16a34a;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex-shrink:0">3</span><span style="font-size:13px;color:#374151">"Precisamos de sua resposta para avisar o médico da presença <strong>3 dias antes</strong> da consulta."</span></div>
+        </div>
+      </div>
+
+      <div style="background:#fff7ed;border:1.5px solid #fed7aa;border-radius:10px;padding:16px;margin-bottom:14px">
+        <div style="font-size:13px;font-weight:700;color:#c2410c;margin-bottom:10px">⚠️ Importante</div>
+        <div style="font-size:13px;color:#374151;line-height:2">
+          ✓ Todos os atendimentos devem ser baseados no histórico do paciente no TASY.<br>
+          ✓ Faça validações, não coletas desnecessárias de informações.<br>
+          ✓ Confirme sempre os dados cadastrais.<br>
+          ✓ Registre na observação: médico direcionado, especialidade, regras aplicadas (idade, forma de pagamento etc.) e informações relevantes.
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px">
+        <div style="background:#fff;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;text-align:center"><div style="font-size:20px;margin-bottom:4px">📞</div><div style="font-size:11px;font-weight:700;color:#1e293b">SISTEMA (TASY)</div><div style="font-size:11px;color:#64748b">Consulte SEMPRE antes de perguntar</div></div>
+        <div style="background:#fff;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;text-align:center"><div style="font-size:20px;margin-bottom:4px">🗓️</div><div style="font-size:11px;font-weight:700;color:#1e293b">PERSONALIZAÇÃO</div><div style="font-size:11px;color:#64748b">Histórico gera experiência premium</div></div>
+        <div style="background:#fff;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;text-align:center"><div style="font-size:20px;margin-bottom:4px">📱</div><div style="font-size:11px;font-weight:700;color:#1e293b">WHATSAPP</div><div style="font-size:11px;color:#64748b">Confirmar SEMPRE autorização para contato</div></div>
+        <div style="background:#fff;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;text-align:center"><div style="font-size:20px;margin-bottom:4px">✅</div><div style="font-size:11px;font-weight:700;color:#1e293b">CONFIRMAÇÃO</div><div style="font-size:11px;color:#64748b">Confirmação de presença 3 dias antes</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <!-- MODAL COMPARTILHAR -->
 <div id="share-modal" onclick="if(event.target===this)fecharCompartilhar()">
   <div class="modal-box">
@@ -1034,7 +1488,7 @@ var medicos=[
   {nome:"Diana Maria Rodrigues Danda",esp:"Estrabismo / Pediatria",unit:"Méier / Leblon / Barra Shopping",cirug:"Sim",enc:"2 por período (Méier) / apenas pela unidade (Leblon/Barra)",h:"2ª · 3ª · 4ª · 5ª",na:"Unimed / Prevent / Leve / Amil / Sulámerica / Vert. (Leblon e Barra: somente particular)",crm:"52-89764-7",rqe:"38351",atend:"Todas as idades"},
   {nome:"Fabiana Shinzato Higa",esp:"Glaucoma",unit:"Méier / Leblon",cirug:"Sim",enc:"2 por período (Méier) / apenas pela unidade (Leblon)",h:"4ª · 6ª",na:"Unimed / Prevent / Vert. (Leblon: somente particular)",crm:"52652547",rqe:"29569",atend:"A partir de 15 anos"},
   {nome:"Guilherme Carneiro Rodrigues",esp:"Refrativa",unit:"Méier",cirug:"Sim",enc:"2 por período",h:"2ª",na:"Unimed / Vert",crm:"521049461",rqe:"37692",atend:"A partir de 10 anos"},
-  {nome:"Isabella Oliveira de Souza",esp:"Plástica / Via lacrimal",unit:"Downtown",cirug:"Sim",enc:"2 por período",h:"4ª",na:"Unimed / Prevent",crm:"52117932-2",rqe:"52168",atend:"Todas as idades"},
+  {nome:"Isabella Oliveira de Souza",esp:"Plástica / Via lacrimal",unit:"SAÍDA DO CORPO CLÍNICO",cirug:"Sim",enc:"–",h:"–",na:"–",crm:"52117932-2",rqe:"52168",atend:"Todas as idades",inativo:true},
   {nome:"Jonathan Clive Lake",esp:"Catarata / Refrativa",unit:"Méier",cirug:"Sim",enc:"Próprios pcts / Casos cirúrgicos",h:"5ª · 6ª",na:"Unimed",crm:"5216554",rqe:"35644",atend:"A partir de 15 anos"},
   {nome:"Leonardo Martins Machado",esp:"Catarata / Retina",unit:"Méier / Leblon",cirug:"Sim",enc:"2 por período (Méier) / apenas pela unidade (Leblon)",h:"2ª · 3ª · 4ª · 5ª · 6ª",na:"Prevent / Vert. (Leblon: somente particular)",crm:"52-79809-6",rqe:"16619",atend:"A partir de 15 anos"},
   {nome:"Luiz Antonio Dantas Ribeiro Junior",esp:"Oftalmologia Geral (somente Vert.)",unit:"Méier / Leblon",cirug:"Não",enc:"1 por hora",h:"4ª · 6ª",na:"Somente Rede exclusiva – Vert.",crm:"52904503",rqe:"–",atend:"A partir de 5 anos"},
@@ -1050,6 +1504,7 @@ var medicos=[
   {nome:"Tatiana Paggi Binato",esp:"Catarata / Pterígio / Plástica / Pálpebras",unit:"Méier",cirug:"Sim",enc:"2 por período",h:"3ª",na:"Unimed / Prevent / Vert.",crm:"52-701-882",rqe:"11633",atend:"A partir de 18 anos"},
   {nome:"Viviane Ribeiro Ferreira Guedes",esp:"Catarata / Glaucoma",unit:"Méier / Downtown",cirug:"Sim",enc:"2 por período (Méier) / 3 por dia (DWT)",h:"2ª · 5ª · 6ª",na:"Unimed / Prevent / Vert.",crm:"5260982-0",rqe:"11376",atend:"A partir de 45 anos"},
 
+  {nome:"Victor Monico Sabdin",esp:"Oftalmologia Geral",unit:"Méier",cirug:"Sim",enc:"2 por período",h:"2ª · Sáb",na:"",crm:"",rqe:"",atend:"A partir de 18 anos"},
   // DOWNTOWN
   {nome:"Ana Clara Thomaz Almeida de Oliveira Rangel",esp:"Oftalmologia Geral",unit:"Downtown",cirug:"Não",enc:"3 por dia",h:"4ª · Sáb",na:"Unimed / Prevent / Vert.",crm:"521112279",rqe:"40262",atend:"A partir de 18 anos"},
   {nome:"Ana Luiza Mansur Souto Spolidoro",esp:"Plástica / Calázio / Pálpebras / Via lacrimal",unit:"Downtown",cirug:"Sim",enc:"3 por dia",h:"6ª",na:"Unimed / Prevent / Vert.",crm:"521162136",rqe:"–",atend:"A partir de 15 anos"},
@@ -1163,11 +1618,12 @@ var portais=[
    acessos:[{unidade:"Todas",login:"12945771748",senha:"Autorizacao2024"}],
    link:"https://www.geap.com.br/prestadores"},
   {nome:"Amil",cor:"#ef4444",
+   obs:"Acesso via Call Center (portal credenciado.amil.com.br).",
    acessos:[
-     {unidade:"Méier",login:"10477071w4",senha:"Acesso@2020"},
-     {unidade:"Downtown",login:"40262626w2",senha:"Acesso@2020"},
-     {unidade:"São Cristóvão",login:"10304070w3",senha:"Acesso@2020"},
-     {unidade:"Nova Iguaçu",login:"72535148w2",senha:"Acesso@2020"},
+     {unidade:"Méier – Call Center",login:"10477071w4",senha:"Acesso@2020"},
+     {unidade:"Downtown – Call Center",login:"40262626w2",senha:"Acesso@2020"},
+     {unidade:"São Cristóvão – Call Center",login:"10304070w3",senha:"Acesso@2020"},
+     {unidade:"Nova Iguaçu – Call Center",login:"72535148w2",senha:"Acesso@2020"},
      {unidade:"Focus (Vert.)",login:"10432582",senha:"focus2026#"}
    ],
    link:"https://credenciado.amil.com.br/"},
@@ -1177,34 +1633,26 @@ var portais=[
      {unidade:"Downtown",login:"181085000232",senha:"Opty@2024"}
    ],
    link:"https://hat.totvs.com.br/atendimento"},
-  {nome:"Leve Saúde",cor:"#ea580c",
-   acessos:[
-     {unidade:"Méier",login:"CMDMEIER",senha:"73786329000101"},
-     {unidade:"Downtown",login:"EYECENTERBR",senha:"00181085000232"},
-     {unidade:"São Cristóvão",login:"EYECENTER",senha:"00181085000151"},
-     {unidade:"Nova Iguaçu",login:"EYECENTERNI",senha:"00181085000313"}
-   ],
-   link:"https://web.solus.levesaude.com.br/prestador/index.php"},
 ];
 
 var exames=[
   {s:"ABERROMETRIA",n:"Aberrometria",ind:"Cirurgia refrativa, qualidade visual",prep:"Não",dil:"Não",ac:"Sim",laser:"Não",aut:"Somente particular",unit:"Downtown",quem:"Médico",dur:"5–10 min"},
-  {s:"ANGIO",n:"Angiofluoresceinografia",ind:"DMRI, retinopatia diabética, oclusões, edema macular",prep:"Não",dil:"Não",ac:"Sim",laser:"Não",aut:"Não",unit:"Nova Iguaçu e São Cristóvão",quem:"Médico",dur:"10–20 min",obs_manu:"Downtown: manutenção sem previsão – agenda DISTANTE (não bloqueada). Retinografia funcionando normalmente."},
+  {s:"ANGIO",n:"Angiofluoresceinografia",ind:"DMRI, retinopatia diabética, oclusões, edema macular",prep:"Não",dil:"Não",ac:"Sim",laser:"Não",aut:"Não",unit:"Nova Iguaçu e São Cristóvão",quem:"Médico",dur:"10–20 min",obs_manu:"Downtown: ANGIO, RET e CVC em manutenção – sem previsão de retorno. Agenda BLOQUEADA."},
   {s:"BIO",n:"Biometria ocular / IOL Master",ind:"Pré-op. catarata, cirurgia refrativa",prep:"Não",dil:"Não",ac:"Não",laser:"Não",aut:"Não",unit:"Todas",quem:"Técnico",dur:"5–10 min"},
   {s:"CAPS",n:"Capsulotomia a laser (Yag)",ind:"Opacificação da cápsula posterior pós-catarata",prep:"Não",dil:"Sim",ac:"Sim",laser:"Sim",aut:"Sim",unit:"Todas",quem:"Médico",dur:"10 min"},
   {s:"CTD",n:"Curva Tensional Diária",ind:"Glaucoma, variações tensionais",prep:"Disponibilidade o dia todo",dil:"Não",ac:"Não",laser:"Não",aut:"Não",unit:"Downtown e São Cristóvão",quem:"Médico",dur:"Dia todo (4–6 medidas)"},
   {s:"CVC",n:"Campo Visual Computadorizado",ind:"Glaucoma, lesões neurológicas, retinopatias",prep:"Não",dil:"Não",ac:"Não",laser:"Não",aut:"Não",unit:"Méier e Nova Iguaçu",quem:"Técnico",dur:"15–30 min",suspenso:false,obs_manu:"Downtown e São Cristóvão: manutenção sem previsão – agenda BLOQUEADA"},
   {s:"ESTEREOFOTO",n:"Estereofoto de Papila",ind:"Glaucoma, hipertensão ocular",prep:"Não",dil:"Pode haver",ac:"Sim",laser:"Não",aut:"Não",unit:"Downtown",quem:"Médico",dur:"5–15 min"},
   {s:"FOTO",n:"Fotocoagulação (Yag laser)",ind:"Retinopatia diabética, degenerações periféricas",prep:"Não",dil:"Sim",ac:"Sim",laser:"Sim",aut:"Sim",unit:"Todas",quem:"Técnico",dur:"15–30 min"},
-  {s:"GONIO",n:"Gonioscopia",ind:"Glaucoma de ângulo fechado",prep:"Não",dil:"Não (incômodo)",ac:"Sim (+60 anos)",laser:"Não",aut:"Não",unit:"Todas exceto Downtown",quem:"Médico",dur:"10 min",obs_manu:"Downtown: equipamento em manutenção – sem previsão de retorno"},
+  {s:"GONIO",n:"Gonioscopia",ind:"Glaucoma de ângulo fechado",prep:"Não",dil:"Não (incômodo)",ac:"Sim (+60 anos)",laser:"Não",aut:"Não",unit:"Todas",quem:"Médico",dur:"10 min"},
   {s:"IRIDO",n:"Iridotomia (Yag laser)",ind:"Glaucoma de ângulo fechado ou risco",prep:"Não",dil:"Sim",ac:"Sim",laser:"Sim",aut:"Sim",unit:"Todas",quem:"Médico",dur:"10 min"},
-  {s:"MICRO",n:"Microscopia Especular da Córnea",ind:"Distrofias corneanas, pré-op. catarata",prep:"Não",dil:"Não",ac:"Não",laser:"Não",aut:"Não",unit:"Todas",quem:"Técnico",dur:"5 min"},
+  {s:"MICRO",n:"Microscopia Especular da Córnea",ind:"Distrofias corneanas, pré-op. catarata",prep:"Não",dil:"Não",ac:"Não",laser:"Não",aut:"Não",unit:"Todas exceto Nova Iguaçu (externos)",quem:"Técnico",dur:"5 min",obs_manu:"Nova Iguaçu: NÃO AGENDAR para pacientes externos. Somente pacientes internos."},
   {s:"MR",n:"Mapeamento de Retina",ind:"Descolamento retina, tumores, degenerações",prep:"Não",dil:"Sim",ac:"Sim",laser:"Não",aut:"Não",unit:"Todas",quem:"Médico",dur:"10–20 min"},
-  {s:"OCT",n:"Tomografia de Coerência Óptica",ind:"DMRI, glaucoma, edema macular, neurite óptica",prep:"Não",dil:"Às vezes",ac:"Sim",laser:"Não",aut:"Sim",unit:"Todas",quem:"Técnico",dur:"5–10 min"},
+  {s:"OCT",n:"Tomografia de Coerência Óptica",ind:"DMRI, glaucoma, edema macular, neurite óptica",prep:"Não",dil:"Às vezes",ac:"Sim",laser:"Não",aut:"Sim",unit:"Todas exceto Méier",quem:"Técnico",dur:"5–10 min",obs_manu:"Méier: equipamento em manutenção – sem previsão de retorno. Agenda BLOQUEADA."},
   {s:"PAQUI",n:"Paquimetria Ultrassônica",ind:"Glaucoma, ceratocone, pré-op. refrativa",prep:"Não",dil:"Não",ac:"Não",laser:"Não",aut:"Não",unit:"Todas",quem:"Técnico",dur:"5 min"},
   {s:"PAM",n:"Potencial de Acuidade Visual",ind:"Pré-op. catarata, opacidades da mídia",prep:"Não",dil:"Sim (Downtown)",ac:"Sim (Downtown)",laser:"Não",aut:"Não",unit:"Todas",quem:"Técnico",dur:"10 min"},
   {s:"PENTACAM",n:"Pentacam",ind:"Ceratocone, cirurgia refrativa, câmara anterior",prep:"Não",dil:"Não",ac:"Não",laser:"Não",aut:"Somente particular",unit:"Méier",quem:"Técnico",dur:"5–10 min"},
-  {s:"RET",n:"Retinografia Digital",ind:"DMRI, retinopatia diabética, glaucoma",prep:"Não",dil:"Às vezes",ac:"Sim",laser:"Não",aut:"Não",unit:"Todas",quem:"Técnico",dur:"5 min"},
+  {s:"RET",n:"Retinografia Digital",ind:"DMRI, retinopatia diabética, glaucoma",prep:"Não",dil:"Às vezes",ac:"Sim",laser:"Não",aut:"Não",unit:"Todas exceto Downtown",quem:"Técnico",dur:"5 min",obs_manu:"Downtown: equipamento em manutenção – sem previsão de retorno"},
   {s:"TOPO",n:"Topografia / Ceratoscopia Corneana",ind:"Ceratocone, cirurgia refrativa, adaptação LC",prep:"Não",dil:"Não",ac:"Não",laser:"Não",aut:"Não",unit:"Todas",quem:"Técnico",dur:"5 min"},
   {s:"TSH",n:"Teste de Sobrecarga Hídrica",ind:"Glaucoma de pressão normal",prep:"2h de jejum de líquido",dil:"Não",ac:"Não",laser:"Não",aut:"Não",unit:"Downtown e São Cristóvão",quem:"Médico",dur:"1–2 horas"},
   {s:"USG",n:"Ultrassonografia Ocular",ind:"Descolamento retina, hemorragia vítrea, tumores",prep:"Não",dil:"Não",ac:"Não",laser:"Não",aut:"Não",unit:"Todas",quem:"Médico",dur:"10–15 min"},
@@ -1606,7 +2054,7 @@ var valoresData={
   leblon:{label:"Leblon",cols:["Exame","Mono","Bino"],
     cons:[
       {n:"Dra. Fabiana Higa",c:"R$ 970,00"},
-      {n:"Dr. Bruno Fontes",c:"R$ 1.100,00"},
+      {n:"Dr. Bruno Fontes",c:"R$ 1.200,00"},
       {n:"Dra. Joana de Farias",c:"R$ 900,00"},
       {n:"Dra. Diana Danda",c:"R$ 600,00"},
       {n:"Dr. Leonardo Machado",c:"R$ 970,00"},
@@ -1615,7 +2063,7 @@ var valoresData={
       {n:"Dra. Luciana Lucchese",c:"R$ 970,00"},
       {n:"Dra. Monique Kling",c:"R$ 550,00"}
     ],
-    obs:"",
+    obs:"Tomografia de Córnea (Visante): solicitar ao comercial para incluir no sistema antes de agendar — não temos opção de agendamento padrão mas realizamos o exame.",
     rows:[
       ["Biometria / IOL Master","R$ 500,00","R$ 1.000,00"],
       ["Campo Visual / Campimetria","R$ 255,00","R$ 510,00"],
@@ -1623,8 +2071,9 @@ var valoresData={
       ["CTD / TSH (bino)","–","R$ 500,00"],
       ["Estereofoto de Papila","R$ 305,00","R$ 610,00"],
       ["FDT – Campimetria (bino)","–","R$ 250,00"],
-      ["Gonioscopia (bino)","–","R$ 340,00"],
-      ["Iridotomia Yag laser","R$ 1.590,00","R$ 3.180,00"],
+      ["Gonioscopia – Dra. Joana","R$ 550,00","–"],
+      ["Gonioscopia – Dra. Mara","R$ 740,00","–"],
+      ["Iridotomia Yag laser","R$ 1.890,00","R$ 3.780,00"],
       ["Mapeamento de Retina","R$ 340,00","R$ 330,00"],
       ["Microscopia Especular da Córnea","R$ 480,00","R$ 960,00"],
       ["OCT – Tomografia de Coerência Óptica","R$ 480,00","R$ 960,00"],
@@ -1645,7 +2094,7 @@ var valoresData={
       {n:"Dr. Vitor Cerqueira",c:"R$ 600,00"},
       {n:"Dra. Fabiane",c:"R$ 600,00"}
     ],
-    obs:"",
+    obs:"Tomografia de Córnea (Visante): solicitar ao comercial para incluir no sistema antes de agendar — não temos opção de agendamento padrão mas realizamos o exame.",
     rows:[
       ["Biometria / IOL Master","R$ 500,00","R$ 1.000,00"],
       ["Campo Visual / Campimetria","R$ 255,00","R$ 510,00"],
@@ -1653,8 +2102,9 @@ var valoresData={
       ["CTD / TSH (bino)","–","R$ 500,00"],
       ["Estereofoto de Papila","R$ 305,00","R$ 610,00"],
       ["FDT – Campimetria (bino)","–","R$ 250,00"],
-      ["Gonioscopia (bino)","–","R$ 340,00"],
-      ["Mapeamento de Retina","R$ 340,00","R$ 330,00"],
+      ["Gonioscopia – Dra. Joana","R$ 550,00","–"],
+      ["Gonioscopia – Dra. Mara","R$ 740,00","–"],
+      ["Mapeamento de Retina","R$ 340,00","R$ 680,00"],
       ["Microscopia Especular da Córnea","R$ 480,00","R$ 960,00"],
       ["OCT – Tomografia de Coerência Óptica","R$ 420,00","R$ 840,00"],
       ["PAM (Potencial de Acuidade Visual)","R$ 170,00","R$ 340,00"],
@@ -1963,6 +2413,22 @@ renderVertConteudo(0,'');
 renderValTabs();
 filtrarValores('');
 carregarRecados();
+
+function showScript(id, btn) {
+  ['essencial','select','unique'].forEach(function(s){
+    var el = document.getElementById('script-'+s);
+    if(el) el.style.display = s===id ? 'block' : 'none';
+  });
+  document.querySelectorAll('.script-tab').forEach(function(b){
+    b.style.background = '#fff';
+    b.style.borderColor = '#e2e8f0';
+  });
+  var colors = {essencial:'#16a34a', select:'#1e4799', unique:'#b45309'};
+  btn.style.background = colors[id];
+  btn.style.color = '#fff';
+  btn.style.borderColor = colors[id];
+}
+
 function showTrUnit(id, btn) {
   ['meier','downtown','ni','sc'].forEach(function(u){
     var el = document.getElementById('tr-'+u);
