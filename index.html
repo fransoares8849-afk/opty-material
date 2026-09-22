@@ -436,8 +436,66 @@ tr:hover td{background:#fafafa}
     <div class="banner-text"><div class="banner-title">Informações de exames</div><div class="banner-desc">Preparo, dilatação, autorização e duração de cada exame</div></div>
   </div>
   <div class="pg-body">
+    <!-- Alerta fixo cirurgia refrativa -->
     <div class="alert a-red"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg><div><strong>⚠️ Atenção importante:</strong> Para exames solicitados com finalidade de <strong>cirurgia refrativa</strong>, não deve ser realizado agendamento de <strong>ceratoscopia ou topografia pré-cirúrgica na unidade Méier Mais</strong>. Nestes casos, os pacientes deverão ser direcionados para outra unidade do grupo.</div></div>
-    <div class="alert a-amber"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg><div><strong>⚠️ Equipamentos em manutenção (sem previsão de retorno):</strong><br>• Downtown – Aberrometria, CVC, Retinografia e Angiografia (sem previsão – bloqueados)<br>• Méier – Pentacam e OCT (sem previsão – bloqueados)<br>• São Cristóvão – Campo Visual / CVC<br>• Nova Iguaçu – Microscopia (somente pacientes internos – não agendar externos)</div></div>
+
+    <!-- Manutenção dinâmica (Firebase) -->
+    <div id="manut-banner-wrap"></div>
+
+    <!-- Gerenciar manutenções (admin) -->
+    <div style="margin-bottom:16px">
+      <button onclick="toggleManutAdmin()" style="display:flex;align-items:center;gap:7px;padding:7px 14px;border:1.5px solid #e2e8f0;border-radius:9px;background:#fff;color:#64748b;font-family:inherit;font-size:12px;cursor:pointer">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+        Gerenciar equipamentos em manutenção
+      </button>
+    </div>
+
+    <div id="manut-admin-panel" style="display:none;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:12px;padding:18px;margin-bottom:16px">
+      <div style="font-size:13px;font-weight:600;margin-bottom:12px;color:#1e293b">🔧 Controle de equipamentos em manutenção</div>
+
+      <div id="manut-admin-login">
+        <label style="font-size:12px;color:#64748b;font-weight:500;display:block;margin-bottom:4px">Senha de administrador</label>
+        <div style="display:flex;gap:8px">
+          <input id="manut-pass" type="text" placeholder="Digite a senha..." style="flex:1;padding:8px 12px;border:1.5px solid #e2e8f0;border-radius:8px;font-family:inherit;font-size:13px;outline:none">
+          <button onclick="verificarManutAdmin()" style="padding:8px 16px;background:#0d9488;color:#fff;border:none;border-radius:8px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer">Entrar</button>
+        </div>
+        <span id="manut-err" style="font-size:12px;color:#ef4444;display:none;margin-top:4px;display:none">Senha incorreta.</span>
+      </div>
+
+      <div id="manut-form" style="display:none">
+        <!-- Lista atual -->
+        <div id="manut-lista-admin" style="margin-bottom:14px"></div>
+
+        <!-- Adicionar novo -->
+        <div style="background:#fff;border:1.5px solid #e2e8f0;border-radius:10px;padding:14px">
+          <div style="font-size:12px;font-weight:600;color:#475569;margin-bottom:10px">➕ Adicionar equipamento em manutenção</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+            <div>
+              <label style="font-size:11px;color:#64748b;font-weight:500;display:block;margin-bottom:3px">Exame / Equipamento</label>
+              <input id="manut-exame" type="text" placeholder="Ex: Campo Visual / CVC" style="width:100%;padding:8px 10px;border:1.5px solid #e2e8f0;border-radius:7px;font-family:inherit;font-size:12px;outline:none">
+            </div>
+            <div>
+              <label style="font-size:11px;color:#64748b;font-weight:500;display:block;margin-bottom:3px">Unidade</label>
+              <select id="manut-unidade" style="width:100%;padding:8px 10px;border:1.5px solid #e2e8f0;border-radius:7px;font-family:inherit;font-size:12px;outline:none;background:#fff">
+                <option>Downtown</option>
+                <option>Méier</option>
+                <option>Nova Iguaçu</option>
+                <option>São Cristóvão</option>
+                <option>Leblon</option>
+                <option>Barra Shopping</option>
+                <option>Todas as unidades</option>
+              </select>
+            </div>
+          </div>
+          <div style="margin-bottom:8px">
+            <label style="font-size:11px;color:#64748b;font-weight:500;display:block;margin-bottom:3px">Observação (opcional)</label>
+            <input id="manut-obs" type="text" placeholder="Ex: Agenda bloqueada · Somente pacientes internos" style="width:100%;padding:8px 10px;border:1.5px solid #e2e8f0;border-radius:7px;font-family:inherit;font-size:12px;outline:none">
+          </div>
+          <button onclick="adicionarManutencao()" style="padding:8px 16px;background:#ef4444;color:#fff;border:none;border-radius:8px;font-family:inherit;font-size:12px;font-weight:600;cursor:pointer">Registrar manutenção</button>
+          <span id="manut-feedback" style="font-size:12px;margin-left:10px;display:none"></span>
+        </div>
+      </div>
+    </div>
     <div class="sw"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><input class="sb-input" type="text" placeholder="Buscar exame..." oninput="filtrarExames(this.value)" id="exam-search"></div>
     <div class="fr">
       <select onchange="filtrarExames(document.getElementById('exam-search').value)" id="f-dilat"><option value="">Dilatação?</option><option value="Sim">Sim</option><option value="Não">Não</option></select>
@@ -1473,6 +1531,7 @@ function go(id,btn){
     });
   }
   if(id==='recados') carregarRecados();
+  if(id==='exames') carregarManutencoes();
 }
 
 // ===== DADOS =====
@@ -1620,10 +1679,10 @@ var portais=[
   {nome:"Amil",cor:"#ef4444",
    obs:"Acesso via Call Center (portal credenciado.amil.com.br).",
    acessos:[
-     {unidade:"Méier – Call Center",login:"10477071w4",senha:"Acesso@2020"},
-     {unidade:"Downtown – Call Center",login:"40262626w2",senha:"Acesso@2020"},
-     {unidade:"São Cristóvão – Call Center",login:"10304070w3",senha:"Acesso@2020"},
-     {unidade:"Nova Iguaçu – Call Center",login:"72535148w2",senha:"Acesso@2020"},
+     {unidade:"Méier – Call Center",login:"10477071w4",senha:"Opty@2026"},
+     {unidade:"Downtown – Call Center",login:"40262626w2",senha:"Opty@2026"},
+     {unidade:"São Cristóvão – Call Center",login:"10304070w3",senha:"Opty@2026"},
+     {unidade:"Nova Iguaçu – Call Center",login:"72535148w2",senha:"Opty@2026"},
      {unidade:"Focus (Vert.)",login:"10432582",senha:"focus2026#"}
    ],
    link:"https://credenciado.amil.com.br/"},
@@ -2443,6 +2502,125 @@ function showTrUnit(id, btn) {
   btn.style.color = '#fff';
   btn.style.borderColor = '#0e7490';
 }
+
+
+// ===================== MANUTENÇÃO DE EQUIPAMENTOS =====================
+var manutAdminOk = false;
+
+function carregarManutencoes() {
+  var url = FIREBASE_URL.replace(/\/+$/, '');
+  if (url.includes('SEU-PROJETO')) { renderManutencoes([]); return; }
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', url + '/manutencoes.json', true);
+  xhr.timeout = 5000;
+  xhr.onload = function() {
+    var items = [];
+    if (xhr.status === 200) {
+      try {
+        var data = JSON.parse(xhr.responseText);
+        if (data) Object.keys(data).forEach(function(k){ items.push(Object.assign({_key:k}, data[k])); });
+        items.sort(function(a,b){ return new Date(a.data) - new Date(b.data); });
+      } catch(e) {}
+    }
+    renderManutencoes(items);
+  };
+  xhr.onerror = xhr.ontimeout = function() { renderManutencoes([]); };
+  xhr.send();
+}
+
+function renderManutencoes(items) {
+  var wrap = document.getElementById('manut-banner-wrap');
+  if (!wrap) return;
+  if (!items || items.length === 0) {
+    wrap.innerHTML = '<div class="alert a-green" style="background:#dcfce7;border:1.5px solid #86efac;color:#14532d"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;flex-shrink:0"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><div>✅ Nenhum equipamento em manutenção no momento.</div></div>';
+    renderManutListaAdmin([]);
+    return;
+  }
+  // Group by unit
+  var grouped = {};
+  items.forEach(function(i){ var u=i.unidade||'Geral'; if(!grouped[u]) grouped[u]=[]; grouped[u].push(i); });
+  var html = '<div class="alert a-amber" style="background:#fef9c3;border:1.5px solid #fde047;color:#854d0e"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;flex-shrink:0"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg><div><strong>⚠️ Equipamentos em manutenção (sem previsão de retorno):</strong><br>';
+  Object.keys(grouped).forEach(function(u){
+    html += '• <strong>'+u+'</strong> – '+grouped[u].map(function(i){ return i.exame+(i.obs?' ('+i.obs+')':''); }).join(', ')+'<br>';
+  });
+  html += '</div></div>';
+  wrap.innerHTML = html;
+  renderManutListaAdmin(items);
+}
+
+function renderManutListaAdmin(items) {
+  var el = document.getElementById('manut-lista-admin');
+  if (!el) return;
+  if (!items || items.length === 0) {
+    el.innerHTML = '<div style="font-size:12px;color:#64748b;margin-bottom:10px;padding:8px;background:#f1f5f9;border-radius:6px">Nenhuma manutenção registrada.</div>';
+    return;
+  }
+  el.innerHTML = '<div style="font-size:12px;font-weight:600;color:#475569;margin-bottom:8px">Registros atuais:</div>'+
+    items.map(function(i){
+      return '<div style="display:flex;align-items:center;justify-content:space-between;padding:8px 10px;background:#fff;border:1px solid #e2e8f0;border-radius:7px;margin-bottom:6px;font-size:12px">'+
+        '<span><strong>'+i.unidade+'</strong> – '+i.exame+(i.obs?' <span style="color:#64748b">('+i.obs+')</span>':'')+' <span style="color:#94a3b8;font-size:10px">'+new Date(i.data).toLocaleDateString('pt-BR')+'</span></span>'+
+        '<button data-key="'+i._key+'" onclick="removerManutencao(this.getAttribute(\'data-key\'))" style="padding:3px 10px;border:1px solid #fca5a5;border-radius:6px;background:#fee2e2;color:#b91c1c;font-size:11px;cursor:pointer;font-family:inherit;flex-shrink:0;margin-left:8px">remover</button>'+
+      '</div>';
+    }).join('');
+}
+
+function toggleManutAdmin() {
+  var p = document.getElementById('manut-admin-panel');
+  p.style.display = p.style.display==='none' ? 'block' : 'none';
+}
+
+function verificarManutAdmin() {
+  var senha = document.getElementById('manut-pass').value.replace(/\s/g,'');
+  var err = document.getElementById('manut-err');
+  if (senha == 'opty123') {
+    manutAdminOk = true;
+    document.getElementById('manut-admin-login').style.display = 'none';
+    document.getElementById('manut-form').style.display = 'block';
+    err.style.display = 'none';
+    carregarManutencoes();
+  } else {
+    err.style.display = 'block';
+  }
+}
+
+function adicionarManutencao() {
+  var exame = document.getElementById('manut-exame').value.trim();
+  var unidade = document.getElementById('manut-unidade').value;
+  var obs = document.getElementById('manut-obs').value.trim();
+  if (!exame) { alert('Informe o nome do exame/equipamento.'); return; }
+  var item = {exame:exame, unidade:unidade, obs:obs, data:new Date().toISOString()};
+  var url = FIREBASE_URL.replace(/\/+$/, '');
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', url+'/manutencoes.json', true);
+  xhr.setRequestHeader('Content-Type','application/json');
+  xhr.onload = function() {
+    if (xhr.status===200) {
+      document.getElementById('manut-exame').value='';
+      document.getElementById('manut-obs').value='';
+      var fb=document.getElementById('manut-feedback');
+      fb.style.display='inline';fb.style.color='#15803d';fb.textContent='✅ Registrado!';
+      setTimeout(function(){fb.style.display='none';},3000);
+      carregarManutencoes();
+    }
+  };
+  xhr.send(JSON.stringify(item));
+}
+
+function removerManutencao(key) {
+  if (!confirm('Remover esta manutenção?')) return;
+  var url = FIREBASE_URL.replace(/\/+$/, '');
+  var xhr = new XMLHttpRequest();
+  xhr.open('DELETE', url+'/manutencoes/'+key+'.json', true);
+  xhr.onload = function() { carregarManutencoes(); };
+  xhr.send();
+}
+
+// Carregar manutenções ao entrar na aba exames
+setInterval(function(){
+  var pg=document.getElementById('page-exames');
+  if(pg&&pg.classList.contains('active')) carregarManutencoes();
+},120000);
+// ===================== FIM MANUTENÇÃO =====================
 
 // ===================== RECADOS =====================
 
