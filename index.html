@@ -2314,7 +2314,7 @@ function filtrarExames(q){
     '<div class="exam-field"><strong>Duração:</strong>&nbsp;'+e.dur+'</div>'+
     '<div class="exam-field"><strong>Acompanhante:</strong>&nbsp;'+e.ac+'</div>'+
     '<div class="exam-field"><strong>Quem realiza:</strong>&nbsp;'+e.quem+'</div>'+
-    '<div class="exam-field"><strong>Unidade:</strong>&nbsp;'+e.unit+'</div>'+(e.obs_manu?'<div class="exam-field" style="grid-column:1/-1;color:#b91c1c"><strong>⚠️ Manutenção:</strong>&nbsp;'+e.obs_manu+'</div>':'')+
+    '<div class="exam-field"><strong>Unidade:</strong>&nbsp;'+e.unit+'</div>'+
     (e.prep!=='Não'?'<div class="exam-field" style="grid-column:1/-1;color:var(--amber)"><strong>Preparo:</strong>&nbsp;'+e.prep+'</div>':'')+
     '</div></div>';
   }).join('');
