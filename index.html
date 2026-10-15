@@ -585,8 +585,52 @@ tr:hover td{background:#fafafa}
       <button onclick="setVertConv('SulAmérica')" id="btn-conv-sul" style="padding:6px 14px;border:1.5px solid #e2e8f0;border-radius:8px;background:#fff;color:#2563eb;font-family:inherit;font-size:12px;font-weight:600;cursor:pointer">SulAmérica</button>
     </div>
     <input type="hidden" id="vert-conv-filter" value="">
+    <!-- Gerenciar informações de clínicas -->
+    <div style="margin-bottom:12px">
+      <button onclick="toggleVertAdmin()" style="display:flex;align-items:center;gap:7px;padding:7px 14px;border:1.5px solid #e2e8f0;border-radius:9px;background:#fff;color:#64748b;font-family:inherit;font-size:12px;cursor:pointer">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+        Gerenciar informações das clínicas
+      </button>
+      <div id="vert-admin-panel" style="display:none;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:12px;padding:18px;margin-top:10px">
+        <div id="vert-admin-login">
+          <div style="font-size:13px;font-weight:600;margin-bottom:8px">Acesso restrito</div>
+          <input id="vert-pass" type="password" placeholder="Senha" onkeydown="if(event.key==='Enter')verificarVertAdmin()" style="padding:8px 12px;border:1.5px solid #e2e8f0;border-radius:8px;font-family:inherit;font-size:13px;width:180px;outline:none">
+          <button onclick="verificarVertAdmin()" style="padding:8px 16px;background:#7c3aed;color:#fff;border:none;border-radius:8px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;margin-left:8px">Entrar</button>
+          <span id="vert-err" style="display:none;color:#ef4444;font-size:12px;margin-left:8px">Senha incorreta</span>
+        </div>
+        <div id="vert-edit-hint" style="display:none;font-size:13px;color:#15803d;font-weight:600">
+          ✅ Modo edição ativado — clique em <strong>✏️ Editar</strong> no card da clínica para atualizar as informações.
+        </div>
+      </div>
+    </div>
     <div class="vtabs" id="vert-tabs-el"></div>
     <div id="vert-conteudo"></div>
+    <!-- Modal de edição (permanente no DOM) -->
+    <div id="vert-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:9999;overflow-y:auto">
+      <div style="background:#fff;border-radius:14px;padding:24px;max-width:520px;margin:40px auto;font-family:inherit">
+        <div style="font-size:15px;font-weight:700;color:#1e293b;margin-bottom:4px" id="vert-modal-titulo"></div>
+        <div style="font-size:12px;color:#64748b;margin-bottom:18px">Edite os campos abaixo. As alterações ficam salvas para todos.</div>
+        <div style="display:grid;gap:12px;font-size:13px">
+          <label style="display:block">Telefone<br><input id="vm-tel" type="text" style="width:100%;padding:8px 10px;border:1.5px solid #e2e8f0;border-radius:8px;font-family:inherit;font-size:13px;box-sizing:border-box;margin-top:4px;outline:none"></label>
+          <label style="display:block">WhatsApp<br><input id="vm-wa" type="text" style="width:100%;padding:8px 10px;border:1.5px solid #e2e8f0;border-radius:8px;font-family:inherit;font-size:13px;box-sizing:border-box;margin-top:4px;outline:none"></label>
+          <label style="display:block">E-mail<br><input id="vm-email" type="text" style="width:100%;padding:8px 10px;border:1.5px solid #e2e8f0;border-radius:8px;font-family:inherit;font-size:13px;box-sizing:border-box;margin-top:4px;outline:none"></label>
+          <label style="display:block">Observações<br><textarea id="vm-obs" rows="3" style="width:100%;padding:8px 10px;border:1.5px solid #e2e8f0;border-radius:8px;font-family:inherit;font-size:13px;box-sizing:border-box;margin-top:4px;resize:vertical;outline:none"></textarea></label>
+        </div>
+        <!-- Seção médicos -->
+        <div style="border-top:1.5px solid #e2e8f0;margin-top:18px;padding-top:14px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+            <div style="font-size:13px;font-weight:700;color:#1e293b">👨‍⚕️ Médicos</div>
+            <button onclick="adicionarMedRow()" style="padding:5px 12px;background:#ede9fe;color:#7c3aed;border:1.5px solid #c4b5fd;border-radius:7px;font-family:inherit;font-size:12px;font-weight:600;cursor:pointer">+ Adicionar</button>
+          </div>
+          <div id="vm-meds-list" style="display:flex;flex-direction:column;gap:8px"></div>
+        </div>
+        <div style="margin-top:18px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+          <button id="vm-salvar" style="padding:9px 22px;background:#7c3aed;color:#fff;border:none;border-radius:9px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer">💾 Salvar</button>
+          <button onclick="fecharVertModal()" style="padding:9px 16px;background:#f1f5f9;color:#64748b;border:none;border-radius:9px;font-family:inherit;font-size:13px;cursor:pointer">Cancelar</button>
+          <span id="vm-feedback" style="display:none;font-size:12px;color:#15803d;font-weight:600"></span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -2373,25 +2417,35 @@ function renderVertTabs_OLD(){document.getElementById('vert-tabs-el').innerHTML=
 function selecionarVert(i){vertAtiva=i;renderVertTabs();renderVertConteudo(i,"");}
 function renderVertConteudo(i,q){
   var v=vert[i];
-  var meds=q?v.meds.filter(function(m){return m.n.toLowerCase().indexOf(q)>=0||m.e.toLowerCase().indexOf(q)>=0;}):v.meds;
+  // Merge Firebase overrides
+  var ov=vertOverrides[String(i)]||{};
+  var tel=ov.tel!==undefined?ov.tel:v.tel;
+  var wa=ov.wa!==undefined?ov.wa:v.wa;
+  var email=ov.email!==undefined?ov.email:v.email;
+  var obs=ov.obs!==undefined?ov.obs:v.obs;
+  var medsBase=ov.meds!==undefined?ov.meds:v.meds;
+  var meds=q?medsBase.filter(function(m){return m.n.toLowerCase().indexOf(q)>=0||m.e.toLowerCase().indexOf(q)>=0;}):medsBase;
   var convBadge=v.conv==='SulAmérica'
     ?'<span style="display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;background:#dbeafe;color:#1d4ed8">SulAmérica</span>'
     :v.conv==='Hapvida/NotreDame + SulAmérica'
     ?'<span style="display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;background:#ccfbf1;color:#0f766e">🏥 Nossa unidade – Hapvida + SulAmérica</span>'
     :'<span style="display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;background:#ede9fe;color:#6d28d9">NotreDame / Hapvida</span>';
+  var editBtnHtml=vertAdminOk
+    ?'<button id="vert-btn-edit" style="padding:5px 12px;border:1.5px solid #7c3aed;border-radius:8px;background:#fff;color:#7c3aed;font-family:inherit;font-size:12px;font-weight:600;cursor:pointer">✏️ Editar</button>'
+    :'';
   document.getElementById('vert-conteudo').innerHTML=
     '<div class="card">'+
     '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:14px">'+
       '<div><div style="font-size:16px;font-weight:700;color:#1e293b">'+v.loc+'</div></div>'+
-      convBadge+
+      '<div style="display:flex;gap:8px;align-items:center">'+convBadge+editBtnHtml+'</div>'+
     '</div>'+
     '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;margin-bottom:12px;font-size:13px">'+
     (v.end?'<div style="grid-column:1/-1"><span style="font-size:11px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:.3px">Endereço</span><div style="margin-top:2px">'+v.end+(v.ref?' — '+v.ref:'')+'</div></div>':'')+
-    (v.tel?'<div><span style="font-size:11px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:.3px">Telefone</span><div style="margin-top:2px">'+v.tel+'</div></div>':'')+
-    (v.wa?'<div><span style="font-size:11px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:.3px">WhatsApp</span><div style="margin-top:2px;color:#15803d;font-weight:500">'+v.wa+'</div></div>':'')+
-    (v.email?'<div style="grid-column:1/-1"><span style="font-size:11px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:.3px">E-mail</span><div style="margin-top:2px;font-size:12px;word-break:break-all">'+v.email.replace(/\|/g,'<br>')+'</div></div>':'')+
+    (tel?'<div><span style="font-size:11px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:.3px">Telefone</span><div style="margin-top:2px">'+tel+'</div></div>':'')+
+    (wa?'<div><span style="font-size:11px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:.3px">WhatsApp</span><div style="margin-top:2px;color:#15803d;font-weight:500">'+wa+'</div></div>':'')+
+    (email?'<div style="grid-column:1/-1"><span style="font-size:11px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:.3px">E-mail</span><div style="margin-top:2px;font-size:12px;word-break:break-all">'+email.replace(/\|/g,'<br>')+'</div></div>':'')+
     '</div>'+
-    (v.obs?'<div style="background:#fef9c3;border:1.5px solid #fde047;border-radius:8px;padding:10px 12px;font-size:12px;color:#854d0e;margin-bottom:12px;line-height:1.6">'+v.obs+'</div>':'')+
+    (obs?'<div style="background:#fef9c3;border:1.5px solid #fde047;border-radius:8px;padding:10px 12px;font-size:12px;color:#854d0e;margin-bottom:12px;line-height:1.6">'+obs+'</div>':'')+
     '<div style="border-top:1px solid #f1f5f9;padding-top:12px">'+
     '<div style="font-size:13px;font-weight:600;margin-bottom:10px">Médicos ('+meds.length+')</div>'+
     '<div>'+meds.map(function(m){
@@ -2403,6 +2457,11 @@ function renderVertConteudo(i,q){
       '</div>';
     }).join('')+'</div>'+
     '</div></div>';
+  // Attach edit button event AFTER innerHTML is set (avoids encoding issues)
+  if(vertAdminOk){
+    var btn=document.getElementById('vert-btn-edit');
+    if(btn)btn.addEventListener('click',function(){abrirVertEditModal(i);});
+  }
 }
 
 function setVertConv(conv){
@@ -2458,6 +2517,10 @@ function filtrarValores(q){
   }else{document.getElementById('val-consultas').innerHTML='';}
   document.getElementById('val-obs').innerHTML=(d.obs?'<div class="alert alert-amber" style="background:#fef9c3;border:1.5px solid #fde047;color:#854d0e"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;flex-shrink:0"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg><div>'+d.obs+'</div></div>':'');
 }
+
+// vert admin state — must be declared before INIT calls renderVertConteudo
+var vertAdminOk = false;
+var vertOverrides = {};
 
 // INIT
 filtrarMedicos('');
@@ -2622,10 +2685,129 @@ setInterval(function(){
 },120000);
 // ===================== FIM MANUTENÇÃO =====================
 
+// ===================== VERT ADMIN =====================
+var vertEditIdx=-1;
+function toggleVertAdmin(){
+  var p=document.getElementById('vert-admin-panel');
+  p.style.display=p.style.display==='none'?'block':'none';
+}
+function verificarVertAdmin(){
+  var senha=document.getElementById('vert-pass').value.replace(/\s/g,'');
+  var err=document.getElementById('vert-err');
+  if(senha==='opty123'){
+    vertAdminOk=true;
+    document.getElementById('vert-admin-login').style.display='none';
+    document.getElementById('vert-edit-hint').style.display='block';
+    err.style.display='none';
+    renderVertConteudo(vertAtiva,'');
+  } else {
+    err.style.display='block';
+  }
+}
+function adicionarMedRow(n,e,h){
+  var list=document.getElementById('vm-meds-list');
+  var row=document.createElement('div');
+  row.className='vm-med-row';
+  row.style.cssText='border:1.5px solid #e2e8f0;border-radius:8px;padding:10px 12px;background:#f8fafc;position:relative';
+  row.innerHTML=
+    '<button type="button" title="Remover médico" style="position:absolute;top:6px;right:8px;background:none;border:none;cursor:pointer;font-size:15px;color:#94a3b8;line-height:1">✕</button>'+
+    '<div style="display:grid;gap:6px;font-size:12px">'+
+      '<input class="vm-med-n" type="text" placeholder="Nome do médico" value="" style="width:100%;padding:6px 8px;border:1px solid #e2e8f0;border-radius:6px;font-family:inherit;font-size:12px;box-sizing:border-box;outline:none">'+
+      '<input class="vm-med-e" type="text" placeholder="Especialidade / convênios" value="" style="width:100%;padding:6px 8px;border:1px solid #e2e8f0;border-radius:6px;font-family:inherit;font-size:12px;box-sizing:border-box;outline:none">'+
+      '<input class="vm-med-h" type="text" placeholder="Horário / observação" value="" style="width:100%;padding:6px 8px;border:1px solid #e2e8f0;border-radius:6px;font-family:inherit;font-size:12px;box-sizing:border-box;outline:none">'+
+    '</div>';
+  row.querySelector('.vm-med-n').value=n||'';
+  row.querySelector('.vm-med-e').value=e||'';
+  row.querySelector('.vm-med-h').value=h||'';
+  row.querySelector('button').addEventListener('click',function(){row.remove();});
+  list.appendChild(row);
+}
+function abrirVertEditModal(i){
+  vertEditIdx=i;
+  var v=vert[i];
+  var ov=vertOverrides[String(i)]||{};
+  document.getElementById('vert-modal-titulo').textContent='Editando: '+v.loc;
+  document.getElementById('vm-tel').value=ov.tel!==undefined?ov.tel:(v.tel||'');
+  document.getElementById('vm-wa').value=ov.wa!==undefined?ov.wa:(v.wa||'');
+  document.getElementById('vm-email').value=ov.email!==undefined?ov.email:(v.email||'');
+  document.getElementById('vm-obs').value=ov.obs!==undefined?ov.obs:(v.obs||'');
+  // Populate doctors
+  var list=document.getElementById('vm-meds-list');
+  list.innerHTML='';
+  var meds=ov.meds!==undefined?ov.meds:v.meds;
+  (meds||[]).forEach(function(m){adicionarMedRow(m.n,m.e,m.h);});
+  document.getElementById('vm-feedback').style.display='none';
+  document.getElementById('vert-modal').style.display='block';
+  document.getElementById('vm-salvar').onclick=function(){salvarVertOverride();};
+}
+function fecharVertModal(){
+  document.getElementById('vert-modal').style.display='none';
+  vertEditIdx=-1;
+}
+function salvarVertOverride(){
+  var i=vertEditIdx;
+  if(i<0)return;
+  // Collect doctors from rows
+  var meds=[];
+  document.querySelectorAll('#vm-meds-list .vm-med-row').forEach(function(row){
+    var n=row.querySelector('.vm-med-n').value.trim();
+    if(!n)return; // skip empty rows
+    meds.push({n:n,e:row.querySelector('.vm-med-e').value.trim(),h:row.querySelector('.vm-med-h').value.trim()});
+  });
+  var payload={
+    tel:document.getElementById('vm-tel').value.trim(),
+    wa:document.getElementById('vm-wa').value.trim(),
+    email:document.getElementById('vm-email').value.trim(),
+    obs:document.getElementById('vm-obs').value.trim(),
+    meds:meds
+  };
+  var btn=document.getElementById('vm-salvar');
+  btn.disabled=true;btn.textContent='Salvando...';
+  var xhr=new XMLHttpRequest();
+  xhr.open('PUT',FIREBASE_URL+'/vert-overrides/'+i+'.json',true);
+  xhr.setRequestHeader('Content-Type','application/json');
+  xhr.onload=function(){
+    btn.disabled=false;btn.textContent='💾 Salvar';
+    if(xhr.status===200){
+      vertOverrides[String(i)]=payload;
+      var fb=document.getElementById('vm-feedback');
+      fb.style.display='inline';fb.textContent='✅ Salvo com sucesso!';
+      setTimeout(function(){fecharVertModal();renderVertConteudo(i,'');},1500);
+    } else {
+      var fb=document.getElementById('vm-feedback');
+      fb.style.display='inline';fb.style.color='#ef4444';fb.textContent='Erro ao salvar. Tente novamente.';
+    }
+  };
+  xhr.onerror=function(){
+    btn.disabled=false;btn.textContent='💾 Salvar';
+    var fb=document.getElementById('vm-feedback');
+    fb.style.display='inline';fb.style.color='#ef4444';fb.textContent='Erro de conexão.';
+  };
+  xhr.send(JSON.stringify(payload));
+}
+function carregarVertOverrides(){
+  var xhr=new XMLHttpRequest();
+  xhr.open('GET',FIREBASE_URL+'/vert-overrides.json',true);
+  xhr.onload=function(){
+    if(xhr.status===200){
+      try{var data=JSON.parse(xhr.responseText);vertOverrides=data||{};}catch(e){vertOverrides={};}
+      renderVertConteudo(vertAtiva,'');
+    }
+  };
+  xhr.send();
+}
+// Auto-refresh vert overrides when tab is open
+setInterval(function(){
+  var pg=document.getElementById('page-vert');
+  if(pg&&pg.classList.contains('active'))carregarVertOverrides();
+},120000);
+// ===================== FIM VERT ADMIN =====================
+
 // ===================== RECADOS =====================
 
 var FIREBASE_URL = 'https://opty-rj-default-rtdb.firebaseio.com';
 var adminAutenticado = false;
+carregarVertOverrides();
 var recadosAtivos = [];
 
 function carregarRecados() {
