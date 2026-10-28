@@ -260,6 +260,40 @@ tr:hover td{background:#fafafa}
 .filter-row select,.fr select{padding:8px 12px;border:1.5px solid var(--border);border-radius:var(--radius);background:#fff;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text);outline:none;cursor:pointer;box-shadow:var(--shadow)}
 .search-bar,.sb-input{width:100%;padding:9px 14px 9px 36px;border:1.5px solid var(--border);border-radius:var(--radius);background:#fff;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text);outline:none;transition:all .2s;box-shadow:var(--shadow)}
 .search-bar:focus,.sb-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(14,165,233,.1)}
+@media print {
+  body * { visibility: hidden !important; }
+  #pdf-print-area, #pdf-print-area * { visibility: visible !important; }
+  #pdf-print-area {
+    position: fixed; inset: 0; overflow: visible; background: #fff;
+    padding: 28px 32px; font-size: 13px !important;
+  }
+  #pdf-print-area .banner {
+    border-radius: 10px !important;
+    margin-bottom: 18px !important;
+    padding: 18px 22px !important;
+    break-inside: avoid;
+  }
+  #pdf-print-area .card,
+  #pdf-print-area .vert-card,
+  #pdf-print-area .apoio-bloco {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 10px !important;
+    box-shadow: none !important;
+    border: 1.5px solid #e2e8f0 !important;
+  }
+  #pdf-print-area .filter-row,
+  #pdf-print-area .fr,
+  #pdf-print-area .sb-input,
+  #pdf-print-area .search-bar,
+  #pdf-print-area input[type=text],
+  #pdf-print-area select,
+  #pdf-print-area button:not(.pdf-keep-btn) { display: none !important; }
+  #pdf-print-area .pg-body { padding: 0 !important; }
+  #pdf-print-area * { font-family: 'DM Sans', Arial, sans-serif !important; }
+  .pdf-no-print { display: none !important; }
+  @page { margin: 15mm 12mm; size: A4; }
+}
 </style>
 </head>
 <body>
@@ -436,6 +470,9 @@ tr:hover td{background:#fafafa}
     <div class="banner-text"><div class="banner-title">Informações de exames</div><div class="banner-desc">Preparo, dilatação, autorização e duração de cada exame</div></div>
   </div>
   <div class="pg-body">
+    <div class="pdf-no-print" style="display:flex;justify-content:flex-end;margin-bottom:12px">
+      <button onclick="exportarPDF('page-exames','Informações de Exames')" style="display:flex;align-items:center;gap:6px;padding:7px 16px;background:#0f172a;color:#fff;border:none;border-radius:8px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>Exportar PDF</button>
+    </div>
     <!-- Alerta fixo cirurgia refrativa -->
     <div class="alert a-red"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg><div><strong>⚠️ Atenção importante:</strong> Para exames solicitados com finalidade de <strong>cirurgia refrativa</strong>, não deve ser realizado agendamento de <strong>ceratoscopia ou topografia pré-cirúrgica na unidade Méier Mais</strong>. Nestes casos, os pacientes deverão ser direcionados para outra unidade do grupo.</div></div>
 
@@ -551,6 +588,9 @@ tr:hover td{background:#fafafa}
     <div class="banner-text"><div class="banner-title">Unidades e contatos</div><div class="banner-desc">Endereços, WhatsApp e e-mails de cada unidade</div></div>
   </div>
   <div class="pg-body">
+    <div class="pdf-no-print" style="display:flex;justify-content:flex-end;margin-bottom:12px">
+      <button onclick="exportarPDF('page-contatos','Unidades e Contatos')" style="display:flex;align-items:center;gap:6px;padding:7px 16px;background:#0f172a;color:#fff;border:none;border-radius:8px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>Exportar PDF</button>
+    </div>
     <div id="contatos-list"></div>
     <div class="card" style="background:#f8fafc"><div class="card-title">Contatos gerais Opty</div><div class="g2" style="font-size:13px;color:var(--muted)"><div style="display:flex;flex-direction:column;gap:7px"><div><strong style="color:var(--text)">Agendamento WhatsApp:</strong> (21) 3043-0700</div><div><strong style="color:var(--text)">Confirmação WhatsApp:</strong> (21) 3037-8318</div><div><strong style="color:var(--text)">Financeiro:</strong> (21) 3037-8303</div><div><strong style="color:var(--text)">Faturamento:</strong> (21) 3037-8305 – Marcelle</div><div><strong style="color:var(--text)">Repasse médico:</strong> (21) 3037-8310 – Márcia</div><div><strong style="color:var(--text)">RH/SESMET:</strong> (21) 3037-8312 – Kelly</div></div><div style="display:flex;flex-direction:column;gap:7px"><div><strong style="color:var(--text)">Vert. SulAmérica:</strong> (21) 3037-8337</div><div><strong style="color:var(--text)">Vert. NotreDame:</strong> (21) 3037-8304 (voz)</div><div><strong style="color:var(--text)">WhatsApp Aut.:</strong> (21) 98556-8789</div><div><strong style="color:var(--text)">Ouvidoria:</strong> ouvidoria.rio@opty.com.br</div></div></div></div>
   </div>
@@ -577,6 +617,9 @@ tr:hover td{background:#fafafa}
     <div class="banner-text"><div class="banner-title">Verticalização</div><div class="banner-desc">Clínicas parceiras da rede SulAmérica e NotreDame</div></div>
   </div>
   <div class="pg-body">
+    <div class="pdf-no-print" style="display:flex;justify-content:flex-end;margin-bottom:12px">
+      <button onclick="exportarPDF('page-vert','Verticalização')" style="display:flex;align-items:center;gap:6px;padding:7px 16px;background:#0f172a;color:#fff;border:none;border-radius:8px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>Exportar PDF</button>
+    </div>
     <div class="sw"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><input class="sb-input" type="text" placeholder="Buscar médico, bairro ou clínica..." id="vert-busca" oninput="filtrarVert(this.value)"></div>
     <div style="display:flex;gap:8px;margin-bottom:14px">
       <button onclick="setVertConv('')" id="btn-conv-all" style="padding:6px 14px;border:1.5px solid #6d28d9;border-radius:8px;background:#6d28d9;color:#fff;font-family:inherit;font-size:12px;font-weight:600;cursor:pointer">Todos</button>
@@ -1105,6 +1148,9 @@ tr:hover td{background:#fafafa}
     </div>
   </div>
   <div class="pg-body">
+    <div class="pdf-no-print" style="display:flex;justify-content:flex-end;margin-bottom:12px">
+      <button onclick="exportarPDF('page-scripts','Scripts de Atendimento')" style="display:flex;align-items:center;gap:6px;padding:7px 16px;background:#0f172a;color:#fff;border:none;border-radius:8px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>Exportar PDF</button>
+    </div>
 
     <!-- Tabs de marca -->
     <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px">
@@ -2158,7 +2204,8 @@ var valoresData={
     cons:[
       {n:"Dra. Fabiana Higa",c:"R$ 970,00"},
       {n:"Dr. Bruno Fontes",c:"R$ 1.200,00"},
-      {n:"Dra. Joana de Farias",c:"R$ 900,00"},
+      {n:"Dra. Joana de Farias",c:"R$ 970,00"},
+      {n:"Dra. Joana – pacientes Méier",c:"R$ 400,00"},
       {n:"Dra. Diana Danda",c:"R$ 600,00"},
       {n:"Dr. Leonardo Machado",c:"R$ 970,00"},
       {n:"Dra. Fabiane Pereira",c:"R$ 970,00"},
@@ -2188,7 +2235,8 @@ var valoresData={
   barra:{label:"Barra Shopping",cols:["Exame","Mono","Bino"],
     cons:[
       {n:"Dr. Albert Machado",c:"R$ 550,00"},
-      {n:"Dra. Joana de Farias",c:"R$ 900,00"},
+      {n:"Dra. Joana de Farias",c:"R$ 970,00"},
+      {n:"Dra. Joana – pacientes Méier",c:"R$ 400,00"},
       {n:"Dra. Diana Danda",c:"R$ 600,00"},
       {n:"Dra. Nathalie Vargas",c:"R$ 600,00"},
       {n:"Dra. Mara Fontes",c:"R$ 1.480,00"},
@@ -2746,6 +2794,31 @@ function abrirVertEditModal(i){
 function fecharVertModal(){
   document.getElementById('vert-modal').style.display='none';
   vertEditIdx=-1;
+}
+function exportarPDF(secaoId, titulo){
+  var secao=document.getElementById(secaoId);
+  if(!secao)return;
+  var old=document.getElementById('pdf-print-area');
+  if(old)old.remove();
+  var clone=secao.cloneNode(true);
+  clone.id='pdf-print-area';
+  clone.style.cssText='';
+  // Remove elementos que não fazem sentido no PDF
+  var remover=clone.querySelectorAll('.pdf-no-print, .filter-row, .fr, .search-wrapper, .sw');
+  remover.forEach(function(el){el.remove();});
+  // Adicionar rodapé com data
+  var rodape=document.createElement('div');
+  rodape.style.cssText='margin-top:24px;padding-top:12px;border-top:1px solid #e2e8f0;font-size:11px;color:#94a3b8;display:flex;justify-content:space-between';
+  var hoje=new Date();
+  var dataStr=hoje.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric'});
+  rodape.innerHTML='<span>Opty Rede Integrada — Rio de Janeiro</span><span>Gerado em '+dataStr+'</span>';
+  clone.appendChild(rodape);
+  document.body.appendChild(clone);
+  var prevTitle=document.title;
+  document.title=titulo+' — Opty RJ';
+  window.print();
+  document.title=prevTitle;
+  clone.remove();
 }
 function salvarVertOverride(){
   var i=vertEditIdx;
